@@ -1,0 +1,17 @@
+# Configs
+.eslintignore
+.eslintrc.yml
+.rtvrc
+tsconfig.json
+
+# Src
+src
+
+# Tests
+test
+*.specs.ts
+.mocharc.json
+
+# Other
+node_modules
+package-lock.json

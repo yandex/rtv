@@ -1,0 +1,89 @@
+.button {
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--border-radius-medium);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: var(--font-size-medium);
+  font-weight: 500;
+  padding: 12px;
+  white-space: nowrap;
+}
+
+.button.disabled {
+  cursor: auto;
+}
+
+.buttonPrimary {
+  composes: button;
+  color: var(--monochrome-white);
+  background-color: var(--accent-orange);
+}
+.buttonPrimary:hover {
+  background-color: var(--accent-orange-intens);
+}
+.buttonPrimary:active {
+  background-color: var(--accent-orange-dark);
+}
+.buttonPrimary:focus-visible {
+  background-color: var(--accent-orange-super-dark);
+  outline: none;
+}
+.buttonPrimary.disabled {
+  color: var(--monochrome-silver);
+  background-color: var(--monochrome-snow);
+}
+
+.buttonSecondary {
+  composes: button;
+  color: var(--monochrome-nero);
+  background-color: var(--monochrome-snow);
+}
+.buttonSecondary:hover {
+  background-color: var(--monochrome-ghost);
+}
+.buttonSecondary:active {
+  background-color: var(--monochrome-light-silver);
+}
+.buttonSecondary:focus-visible {
+  outline: 2px solid var(--accent-orange);
+}
+.buttonSecondary.disabled {
+  color: var(--monochrome-silver);
+  background-color: var(--monochrome-snow);
+}
+
+.buttonGhost {
+  composes: button;
+  color: var(--monochrome-nero);
+  background-color: transparent;
+}
+.buttonGhost:not(.disabled):hover {
+  background-color: var(--monochrome-snow);
+}
+.buttonGhost:not(.disabled):active {
+  background-color: var(--monochrome-ghost);
+}
+.buttonGhost:focus-visible {
+  outline: 2px solid var(--accent-orange);
+}
+
+.buttonWarning {
+  composes: button;
+  color: var(--system-bright-red);
+  background-color: var(--monochrome-white);
+  box-sizing: border-box;
+  border: 2px solid var(--system-bright-red);
+}
+.buttonWarning:hover {
+  color: var(--monochrome-white);
+  background-color: var(--system-bright-red);
+}
+.buttonWarning:active,
+.buttonWarning:focus-visible {
+  border: 2px solid var(--system-red);
+  color: var(--monochrome-white);
+  background-color: var(--system-red);
+  outline: none;
+}

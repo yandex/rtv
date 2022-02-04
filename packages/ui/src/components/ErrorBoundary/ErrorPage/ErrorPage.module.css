@@ -1,0 +1,26 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--monochrome-light-gray);
+  align-items: center;
+  justify-content: center;
+}
+
+.sadIcon {
+  margin-bottom: 12px;
+}
+
+.title {
+  margin-bottom: 8px;
+}
+
+.button {
+  margin-top: 32px;
+  padding: 12px 24px;
+}
+
+.refreshIcon {
+  margin-right: 8px;
+  fill: var(--monochrome-white);
+}

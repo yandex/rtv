@@ -1,0 +1,2 @@
+Pkgid: TESTABCDEF is Terminated
+spend time for pkgcmd is [389]ms

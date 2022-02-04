@@ -1,0 +1,74 @@
+:global(.remoteControlPopup-overlay) {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+:global(.remoteControlPopup-content) {
+  background-color: white;
+  border: 1px solid var(--monochrome-ghost);
+  padding: 48px;
+  box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.closeButton {
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.closeButton:focus {
+  outline: none;
+}
+
+.container {
+  position: relative;
+}
+
+.loadingContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.table {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: repeat(19, auto);
+  grid-auto-flow: column;
+  column-gap: 32px;
+}
+
+.item {
+  cursor: default;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  border-bottom: 1px solid var(--monochrome-ghost);
+  gap: 8px;
+}
+
+.tvKeyCode {
+  color: var(--monochrome-charcoal);
+  width: 100px;
+}
+
+.keyCode {
+  color: var(--monochrome-light-gray);
+  width: 100px;
+}
+
+.item:hover .tvKeyCode,
+.item:hover .keyCode {
+  color: var(--accent-orange);
+}

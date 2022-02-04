@@ -1,0 +1,17 @@
+# Configs
+.eslintignore
+.eslintrc
+tsconfig.json
+rollup.config.js
+
+# Src
+src
+
+# Tests
+test
+*.specs.js
+
+# Other
+node_modules
+package-lock.json
+scripts

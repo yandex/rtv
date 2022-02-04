@@ -1,0 +1,55 @@
+.editorContainer {
+  border: 1px solid var(--monochrome-ghost);
+  box-sizing: border-box;
+}
+
+.iconButton {
+  padding: 8px;
+}
+
+.chevronIcon {
+  fill: var(--monochrome-silver);
+}
+
+.title {
+  margin: 29px 32px;
+}
+
+.closeButton {
+  position: absolute;
+  border-radius: 50%;
+  top: 29px;
+  right: 26px;
+  padding: 6px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: flex-end;
+  height: 80px;
+  margin: 0 32px;
+  gap: 16px;
+}
+
+.button {
+  width: 116px;
+  margin-left: 8px;
+  height: 40px;
+  margin: 20px 0;
+}
+
+.editor :global(.ace_gutter) {
+  background-color: var(--monochrome-white);
+}
+
+:global(.codeEditorPopup-overlay) {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+:global(.codeEditorPopup-content) {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 62.5%;
+  box-shadow: var(--box-shadow-large);
+  border-radius: var(--border-radius-medium);
+}

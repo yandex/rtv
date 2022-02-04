@@ -1,0 +1,16 @@
+{
+  "event": "ms.channel.connect",
+  "data": {
+    "id": "1d987f8a-7f4f-4087-85e9-f3213b7ff6c8",
+    "token": "1234567",
+    "clients": [
+      {
+        "attributes": { "name": null, "token": "66798289" },
+        "connectTime": 1567538462123,
+        "deviceName": "Smart Device",
+        "id": "cb49031-1a78-4218-8fbb-e837388ac09b",
+        "isHost": false
+      }
+    ]
+  }
+}

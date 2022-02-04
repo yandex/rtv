@@ -1,0 +1,2 @@
+/usr/bin/app_launcher: unrecognized option '--timeout=5000'
+... successfully launched pid = 9826 with debug 0

@@ -1,0 +1,104 @@
+{
+  "name": "rtv-ui",
+  "version": "1.21.1",
+  "description": "RTV UI",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^16.11.19",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "rtv-client": "^1.21.1",
+    "ace-builds": "^1.4.13",
+    "classnames": "^2.1.3",
+    "joi": "^17.5.0",
+    "json5": "^2.2.0",
+    "nanoid": "^3.1.9",
+    "react": "^17.0.2",
+    "react-ace": "^9.5.0",
+    "react-dom": "^17.0.2",
+    "react-query": "^3.34.12",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0",
+    "react-select": "^5.2.2",
+    "react-toastify": "^8.1.0",
+    "reactjs-popup": "^2.0.5",
+    "typescript": "^4.5.4",
+    "web-vitals": "^2.1.3"
+  },
+  "scripts": {
+    "dev": "npm start",
+    "start": "PORT=3001 react-scripts start",
+    "build": "REACT_APP_API_URL='/api' react-scripts build",
+    "test": "react-scripts test --watchAll=false --passWithNoTests",
+    "eject": "react-scripts eject",
+    "lint": "eslint src --ext=js,jsx,ts,tsx",
+    "lint:fix": "eslint src --ext=js,jsx,ts,tsx --fix",
+    "precommit": "npm run lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "rules": {
+      "import/order": [
+        "warn",
+        {
+          "groups": [
+            "builtin",
+            "external",
+            "internal"
+          ],
+          "pathGroups": [
+            {
+              "pattern": "react",
+              "group": "external",
+              "position": "before"
+            },
+            {
+              "pattern": "components/**",
+              "group": "internal"
+            },
+            {
+              "pattern": "icons/**",
+              "group": "internal"
+            },
+            {
+              "pattern": "utils/**",
+              "group": "internal"
+            },
+            {
+              "pattern": "hooks/**",
+              "group": "internal"
+            }
+          ],
+          "pathGroupsExcludedImportTypes": [
+            "react"
+          ],
+          "newlines-between": "always",
+          "alphabetize": {
+            "order": "asc",
+            "caseInsensitive": true
+          }
+        }
+      ]
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

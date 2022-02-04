@@ -1,0 +1,23 @@
+.cell {
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 24px;
+}
+
+.cell.edit {
+  border-bottom: 2px solid var(--accent-orange);
+}
+
+.cell.error {
+  border-bottom: 2px solid var(--system-red);
+}
+
+:global(.validationPopup-content) {
+  color: var(--system-red);
+  margin: auto;
+  max-width: 250px;
+  padding: 8px;
+  background: rgb(255, 255, 255);
+  box-shadow: var(--box-shadow-large);
+  border-radius: var(--border-radius-medium);
+}

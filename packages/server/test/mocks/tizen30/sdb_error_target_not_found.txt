@@ -1,0 +1,2 @@
+error: target not found
+error: serial number '1.2.3.100' wrong

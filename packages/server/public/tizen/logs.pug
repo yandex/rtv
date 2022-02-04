@@ -1,0 +1,75 @@
+html
+  head(lang='en')
+    meta(charset='UTF-8')
+    title Debug Logs
+    link(href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", crossorigin="anonymous")
+    // Optional theme
+      link(rel='stylesheet', href=baseUrl + 'resources/css/bootstrap-theme.min.css')
+    script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js', integrity='sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=', crossorigin='anonymous')
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js", integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM", crossorigin="anonymous")
+    style.
+      .level-warn{
+      color : rgb(236, 197, 37);
+      }
+      .level-error {
+      color: rgb(255, 60, 60);
+      }
+      .level-verbose{
+      color : rgb(108, 185, 192);
+      }
+      .level-debug{
+      color : rgb(199, 152, 152);
+      }
+      .level-silly{
+      color : rgb(121, 121, 121);
+      }
+      .level-info{
+      color : rgb(49, 192, 49);
+      }
+      #logPanel table{
+      table-layout:fixed;
+      }
+      #log td{
+      word-wrap:break-word;
+      }
+      #log td.level{
+      width:100px;
+      }
+      #log td.time{
+      width:100px;
+      }
+  body
+    .container-fluid
+      .page-header
+        h1 MultiScreen Service Logs
+        button#btnClear.btn.btn-info(type='button') CLEAR
+      #logPanel.panel.panel-primary
+        .panel-heading Logs
+        .panel-body
+          table.table.table-striped
+            tbody#log
+    script.
+      var ws = new WebSocket((window.location.protocol === 'https:' ? 'wss' : 'ws') +'://' + window.location.host + '#{baseUrl}' + 'logger');
+      ws.onopen = function(){
+      console.info("ws is open");
+      };
+      ws.onclose = function(){
+      console.info("ws is closed");
+      };
+      ws.onerror = function(err){
+      console.error(err);
+      };
+      ws.onmessage = function(msg){
+      console.debug(msg.data);
+      msg = JSON.parse(msg.data);
+      var row = "";
+      row += '<tr class="level-' + msg.level +'">';
+      row += '<td class="level">' + msg.level.toUpperCase() + '</td>';
+      row += '<td class="message">' + JSON.stringify(msg.msg, null, " ") + '</td>';
+      row += '<td class="meta">' + JSON.stringify(msg.meta, null, " ") + '</td>';
+      row += '</tr>';
+      $('#log').append(row);
+      };
+      $('#btnClear').on('click', function(){
+      $('#log').empty();
+      });

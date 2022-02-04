@@ -1,0 +1,25 @@
+# modules
+node_modules
+
+# editors
+.idea
+.vscode
+
+# logs
+npm-debug.log
+/roadmap.txt
+/deploy.txt
+.temp
+/cert
+/coverage
+/.nyc_output
+/dev.txt
+
+#configs
+.rtv-server
+
+#build
+dist
+
+# osx
+.DS_Store

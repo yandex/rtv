@@ -1,0 +1,15 @@
+.button {
+  padding: 8px;
+}
+
+.buttonEnabled {
+  composes: button;
+}
+
+.buttonDisabled {
+  opacity: 0.7;
+}
+
+.eyeIcon {
+  fill: var(--accent-orange);
+}

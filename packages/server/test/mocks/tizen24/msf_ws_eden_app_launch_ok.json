@@ -1,0 +1,5 @@
+{
+  "event": "ed.apps.launch",
+  "data": true,
+  "from": "host"
+}

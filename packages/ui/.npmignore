@@ -1,0 +1,10 @@
+# Configs
+webpack.config.js
+.eslintrc
+
+# Src
+src
+
+# Other
+node_modules
+package-lock.json

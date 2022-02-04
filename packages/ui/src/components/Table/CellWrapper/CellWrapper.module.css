@@ -1,0 +1,29 @@
+.wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: stretch;
+}
+
+.content {
+  min-width: 0;
+  flex-grow: 1;
+  padding: 0 16px;
+}
+
+.content.left {
+  text-align: left;
+}
+
+.content.center {
+  text-align: center;
+}
+
+.content.right {
+  text-align: right;
+}
+
+.separator {
+  border-right: 1px solid var(--monochrome-ghost);
+  width: 1px;
+  height: 24px;
+}

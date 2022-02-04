@@ -1,0 +1,31 @@
+{
+  "name": "rtv-cli",
+  "version": "1.21.1",
+  "description": "Remote TV control CLI for developers",
+  "scripts": {
+    "code": "eslint src test",
+    "test": "mocha test/setup.ts test/specs",
+    "docs": "ts-node ./scripts/docs.ts",
+    "clean:dist": "rm -rf dist",
+    "build": "npm run clean:dist && tsc",
+    "start:prod": "node dist/cli.js",
+    "start:dev": "ts-node src/cli.ts"
+  },
+  "bin": {
+    "rtv": "dist/cli.js"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "rtv-client": "^1.21.1",
+    "chalk": "^2.4.1",
+    "commander": "^2.18.0",
+    "console.table": "^0.10.0",
+    "open": "^7.0.4",
+    "read-pkg-up": "^6.0.0"
+  },
+  "devDependencies": {
+    "fs-extra": "^7.0.0",
+    "unzipper": "^0.9.3"
+  },
+  "license": "MIT"
+}

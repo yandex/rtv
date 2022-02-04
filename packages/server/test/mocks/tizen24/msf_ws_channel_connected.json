@@ -1,0 +1,15 @@
+{
+  "event": "ms.channel.connect",
+  "data": {
+    "id": "4556cea0-7ae0-11e8-9a98-63a6fc8554bc",
+    "clients": [
+      {
+        "id": "4556cea0-7ae0-11e8-9a98-63a6fc8554bc",
+        "connectTime": 1530196428939,
+        "attributes": {},
+        "deviceName": "U21hcnQgVmlldw==",
+        "isHost": false
+      }
+    ]
+  }
+}

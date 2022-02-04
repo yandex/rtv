@@ -1,0 +1,19 @@
+.loginInfo {
+  font-weight: 400;
+  gap: 8px;
+}
+
+.logout {
+  font-weight: 400;
+  width: 150px;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+:global(.loginInfoPopup-content) {
+  background-color: white;
+  padding: 4px;
+  border: 1px solid var(--monochrome-alabaster);
+  border-radius: var(--border-radius-medium);
+  box-shadow: var(--box-shadow-medium);
+}

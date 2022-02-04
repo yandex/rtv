@@ -1,0 +1,8 @@
+	Application List for user 5001
+	User's Application
+	 Name 	 AppID
+	=================================================
+	'Photo player'	 'org.tizen.mycontent-photo-player-tv'
+	'AVControl'	 'org.tizen.AVControl'
+	''	 'org.tizen.SMSourceAPP'
+	=================================================

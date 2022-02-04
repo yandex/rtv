@@ -1,0 +1,40 @@
+.toast {
+  border-top: 2px solid;
+}
+
+.toast:global(.Toastify__toast--success) {
+  border-top-color: var(--system-apple-green);
+}
+
+.toast:global(.Toastify__toast--info) {
+  border-top-color: var(--system-yellow);
+}
+
+.toast:global(.Toastify__toast--warning) {
+  border-top-color: var(--system-yellow);
+}
+
+.toast:global(.Toastify__toast--error) {
+  border-top-color: var(--system-red);
+}
+
+.toast :global(.Toastify__close-button) {
+  align-self: center;
+}
+
+.successIcon {
+  fill: var(--system-apple-green);
+}
+
+.errorIcon {
+  fill: var(--system-red);
+}
+
+.warningIcon {
+  fill: var(--system-yellow);
+  stroke: var(--system-yellow);
+}
+
+.infoIcon {
+  fill: var(--system-yellow);
+}

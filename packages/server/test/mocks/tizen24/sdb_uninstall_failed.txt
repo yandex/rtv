@@ -1,0 +1,5 @@
+uninstall TESTABCDEF.App
+app_id[TESTABCDEF.App] uninstall start
+app_id[TESTABCDEF.App] uninstall failed[132]
+spend time for wascmd is [72]ms
+cmd_ret:0

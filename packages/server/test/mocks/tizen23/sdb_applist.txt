@@ -1,0 +1,6 @@
+ No                             Name          Version                                                             GUID       Package ID                   App ID
+ --                               --             ----                                                          -------            -----                    -----
+  1                          smartHD            4.1.0                                        http://yourdomain/smartHD       vxqdl8ERTQ       vxqdl8ERTQ.SmartTV
+  2             Okko Фильмы HD        125.44.69                                      http://okko.tv/OkkoMoviesHD       4uI12bRGkE        4uI12bRGkE.OkkoHD
+  3                                           0.10.42                                       http://yourdomain/adplayer       adplatform      adplatform.ADPlayer
+ 

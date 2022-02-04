@@ -1,0 +1,26 @@
+{
+  "event": "ed.installedApp.get",
+  "data": {
+    "data": [
+      {
+        "appId": "111299001912",
+        "app_type": 2,
+        "icon": "/opt/down/webappservice/apps_icon/FirstScreen/111299001912/250x250.png",
+        "name": "YouTube"
+      },
+      {
+        "appId": "org.tizen.browser",
+        "app_type": 4,
+        "icon": "/opt/down/webappservice/apps_icon/LocalIcon/org.tizen.browser.png",
+        "name": "Web Browser"
+      },
+      {
+        "appId": "sR0vCWDCGe.ExampleApp",
+        "app_type": 2,
+        "icon": "/opt/down/webappservice/apps_icon/FirstScreen/sR0vCWDCGe.ExampleApp/250x250.png",
+        "name": "ExampleApp"
+      }
+    ]
+  },
+  "from": "host"
+}

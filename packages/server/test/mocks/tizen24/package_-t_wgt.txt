@@ -1,0 +1,5 @@
+Author certficate: /Users/user/tizen-studio-data/profile/author.p12
+Distributor1 certificate : /Users/user/tizen-studio-data/profile/tizen-distributor-signer.p12
+Excludes File Pattern: {.manifest.tmp, .delta.lst}
+Ignore File: /Users/user/Dev/tv-app/packages/tv-app/dist/tizen-test/pkg/.manifest.tmp
+Package File Location: /Users/user/Dev/rtv/App (test).wgt

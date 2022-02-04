@@ -1,0 +1,15 @@
+.input {
+  border: none;
+  outline: none;
+  font-size: 100%;
+  width: 100%;
+}
+
+.input.error::placeholder {
+  color: var(--system-red);
+}
+
+.text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

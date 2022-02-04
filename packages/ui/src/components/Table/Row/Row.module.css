@@ -1,0 +1,15 @@
+.row {
+  height: 50px;
+}
+
+.row:last-child .cell:first-child {
+  border-radius: 0 0 0 var(--border-radius-medium);
+}
+
+.row:last-child .cell:last-child {
+  border-radius: 0 0 var(--border-radius-medium) 0;
+}
+
+.row:not(.edit):nth-child(even) {
+  background-color: var(--monochrome-alabaster);
+}

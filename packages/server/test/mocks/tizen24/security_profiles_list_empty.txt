@@ -1,0 +1,2 @@
+Loaded in '/Users/user/tizen-studio-data/profile/profiles.xml'.
+[Profile Name]      [Active]

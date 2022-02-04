@@ -1,0 +1,11 @@
+Transferring the package...
+Transferred the package: /tmp/rtv-server/App.wgt -> /opt/usr/apps/tmp
+Installing the package...
+java.util.zip.ZipException: invalid distance too far back
+        at java.util.zip.InflaterInputStream.read(InflaterInputStream.java:164)
+--------------------
+Platform log view
+--------------------
+
+Failed to install Tizen application.
+Total time: 00:00:03.317

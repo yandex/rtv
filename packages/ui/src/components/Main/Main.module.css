@@ -1,0 +1,78 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 72px;
+  padding: 0px 20px 0px 32px;
+  background-color: var(--monochrome-white);
+  box-shadow: var(--box-shadow-medium);
+  flex-shrink: 0;
+}
+
+.tvSelectContainer {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.occupiedIcon {
+  fill: var(--system-red);
+}
+
+.occupiedLabel {
+  color: var(--system-red);
+}
+
+.occupiedByLabel {
+  color: var(--monochrome-light-gray);
+}
+
+.settingsContainer {
+  align-items: center;
+  display: flex;
+  margin-left: auto;
+  gap: 4px;
+}
+
+.settingsIcon {
+  fill: var(--monochrome-charcoal);
+  stroke: var(--monochrome-charcoal);
+}
+
+.link {
+  border-radius: var(--border-radius-large);
+  height: 24px;
+  padding: 8px;
+}
+.link:hover {
+  background-color: var(--monochrome-snow);
+}
+.link:active {
+  background-color: var(--monochrome-ghost);
+}
+.link:focus-visible {
+  outline: 2px solid var(--accent-orange);
+}
+
+.controlsContainer {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px 32px;
+  border-bottom: 1px solid var(--monochrome-ghost);
+  flex-shrink: 0;
+}
+
+.mainBody {
+  padding: 32px 0;
+  display: flex;
+  flex-grow: 1;
+  min-height: 0;
+  overflow-x: hidden;
+}

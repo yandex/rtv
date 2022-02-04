@@ -1,0 +1,10 @@
+{
+  "watch": ["./src/**/*"],
+  "exec": "npx ts-node ./src/cli.ts",
+  "ext": "js ts",
+  "events": {
+    "restart": "kill-port 3000",
+    "crash": "kill-port 3000"
+  },
+  "delay": "1500"
+}

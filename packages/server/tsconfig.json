@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "module": "CommonJS",
+    "lib": ["es2021"],
+    "typeRoots": [
+      "./typings",
+      "./node_modules/@types",
+      "../../node_modules/@types",
+    ],
+  },
+  "include": [
+    "types/**/*", "src/**/*"
+  ]
+}

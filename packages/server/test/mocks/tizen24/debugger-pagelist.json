@@ -1,0 +1,8 @@
+[
+  {
+    "id": 1,
+    "title": "App Title",
+    "url": "file:///index.html",
+    "inspectorUrl": "/inspector.html?page=1"
+  }
+]

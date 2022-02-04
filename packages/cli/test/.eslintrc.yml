@@ -1,0 +1,8 @@
+env:
+  mocha: true
+plugins:
+- mocha
+rules:
+  max-len: 0
+  max-nested-callbacks: 0
+  mocha/no-exclusive-tests: error

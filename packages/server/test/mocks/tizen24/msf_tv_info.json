@@ -1,0 +1,33 @@
+{
+  "id": "uuid:91a80e44-8c53-49f1-8940-8274d72b309d",
+  "name": "[TV] Kitchen",
+  "version": "2.1.0",
+  "device": {
+    "type": "Samsung SmartTV",
+    "duid": "uuid:91a80e44-8c53-49f1-8940-8274d72b309d",
+    "model": "16_HAWKM_FHD",
+    "modelName": "UE49K5500",
+    "description": "Samsung DTV RCR",
+    "networkType": "wireless",
+    "ssid": "cc:46:d6:09:4e:8c",
+    "ip": "1.2.3.5",
+    "firmwareVersion": "Unknown",
+    "name": "[TV] Kitchen",
+    "id": "uuid:91a80e44-8c53-49f1-8940-8274d72b309d",
+    "udn": "uuid:91a80e44-8c53-49f1-8940-8274d72b309d",
+    "resolution": "1920x1080",
+    "countryCode": "RU",
+    "msfVersion": "2.1.0",
+    "smartHubAgreement": "true",
+    "VoiceSupport": "false",
+    "GamePadSupport": "true",
+    "wifiMac": "40:16:3B:B8:A9:FA",
+    "developerMode": "1",
+    "developerIP": "87.250.238.225",
+    "OS": "Tizen"
+  },
+  "type": "Samsung SmartTV",
+  "uri": "http://1.2.3.5:8001/api/v2/",
+  "remote": "1.0",
+  "isSupport": "{\"remote_available\":\"true\",\"remote_fourDirections\":\"true\",\"remote_touchPad\":\"true\",\"remote_voiceControl\":\"false\",\"DMP_available\":\"true\",\"DMP_DRM_PLAYREADY\":\"false\",\"DMP_DRM_WIDEVINE\":\"false\",\"EDEN_available\":\"true\"}"
+}

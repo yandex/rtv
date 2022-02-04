@@ -1,0 +1,116 @@
+.root {
+  --gap: 32px;
+
+  position: relative;
+}
+
+.content {
+  --header-height: 44px;
+
+  height: calc(100% - var(--header-height));
+  margin-top: var(--header-height);
+  overflow-y: auto;
+  color: var(--monochrome-charcoal);
+  transition: width 0.5s;
+}
+
+.contentExpanded {
+  composes: content;
+  width: 40vw;
+  overflow-x: hidden;
+}
+
+.contentCollapsed {
+  composes: content;
+  overflow: hidden;
+  width: 32px;
+}
+
+.header {
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  margin: 0 var(--gap);
+}
+
+.headerExpanded {
+  composes: header;
+  left: 0;
+}
+
+.headerCollapsed {
+  composes: header;
+  right: 0;
+}
+
+.logsButton {
+  padding: 5px 8px;
+}
+
+.clearLogsButton {
+  line-height: 18px;
+  padding: 7px 12px;
+  width: 116px;
+}
+
+.icon {
+  margin-left: 8px;
+}
+
+.logItem {
+  box-sizing: border-box;
+  width: calc(40vw - 2 * var(--gap));
+  margin: 0 var(--gap);
+  background-color: var(--monochrome-white);
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--box-shadow-medium);
+  padding: 20px;
+}
+
+.logItem:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.error {
+  color: var(--system-bright-red);
+}
+
+.logItemRow {
+  line-height: 1.5;
+}
+
+.logItemContent {
+  margin-top: 10px;
+  vertical-align: top;
+}
+
+.logItemField {
+  padding: 0 32px 0 0;
+  margin-right: 20px;
+}
+
+.logItemValue {
+  padding: 0;
+  word-break: break-word;
+}
+
+.time {
+  margin-bottom: 4px;
+  color: var(--monochrome-light-gray);
+}
+
+.emptyLogsContainer {
+  color: var(--monochrome-light-gray);
+  width: calc(40vw - 2 * var(--gap));
+  margin: 0 var(--gap);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.logsIcon {
+  fill: var(--monochrome-light-gray);
+}

@@ -1,0 +1,33 @@
+.option {
+  display: flex;
+  align-items: center;
+}
+
+.status {
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border-radius: 50%;
+}
+
+.statusOn {
+  composes: status;
+  background-color: var(--system-apple-green);
+}
+
+.statusOff {
+  composes: status;
+  background-color: var(--system-bright-red);
+}
+
+.tvText {
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+  white-space: pre;
+}
+
+.ipText {
+  color: var(--monochrome-silver);
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+}

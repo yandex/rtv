@@ -1,0 +1,11 @@
+[
+  {
+    "description": "",
+    "devtoolsFrontendUrl": "/devtools/inspector.html?ws=1.2.3.5:7011/devtools/page/6319D57F-1A01-403A-915A-CBF24A9C4D74",
+    "id": "6319D57F-1A01-403A-915A-CBF24A9C4D74",
+    "title": "App Title",
+    "type": "page",
+    "url": "file:///index.html",
+    "webSocketDebuggerUrl": "ws://1.2.3.5:7011/devtools/page/6319D57F-1A01-403A-915A-CBF24A9C4D74"
+  }
+]

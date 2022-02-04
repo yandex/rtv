@@ -1,0 +1,33 @@
+.expander {
+  flex-shrink: 0;
+  background-color: var(--monochrome-white);
+  border-bottom: 1px solid var(--monochrome-ghost);
+}
+
+.container {
+  padding: 24px 100px;
+  line-height: 24px;
+}
+
+.container.loading {
+  text-align: center;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: max-content minmax(auto, 1fr) max-content minmax(auto, 1fr) max-content minmax(auto, 1fr) max-content max-content;
+  grid-auto-rows: auto;
+  align-content: center;
+  overflow: hidden;
+  column-gap: 16px;
+}
+
+.label {
+  color: var(--monochrome-light-gray);
+}
+
+.value {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

@@ -1,0 +1,36 @@
+.button {
+  padding: 11px 12px;
+  min-width: 116px;
+}
+
+.closeButton {
+  position: absolute;
+  border-radius: 50%;
+  top: 32px;
+  right: 26px;
+  padding: 6px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.text {
+  margin-top: 16px;
+  margin-bottom: 32px;
+}
+
+:global(.confirmationPopup-overlay) {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+:global(.confirmationPopup-content) {
+  margin: auto;
+  padding: 32px;
+  background: rgb(255, 255, 255);
+  width: 480px;
+  box-shadow: var(--box-shadow-large);
+  border-radius: var(--border-radius-medium);
+}

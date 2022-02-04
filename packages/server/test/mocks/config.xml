@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:tizen="http://tizen.org/ns/widgets"
+    id="https://app.com/"
+    version="1.0.1"
+    height="1080"
+    width="1920"
+    viewmodes="fullscreen"
+>
+    <tizen:application id="ABCDEF.12345" package="ABCDEF" required_version="2.3"/>
+    <name xml:lang="ru-ru">NAME</name>
+    <name>NAME</name>
+    <author href="https://www.smth.com/" email="a@smth.com">Author</author>
+    <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
+    <tizen:metadata key="http://samsung.com/tv/metadata/prelaunch.support" value="true"/>
+    <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+    <tizen:privilege name="http://tizen.org/privilege/tv.audio"/>
+    <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <tizen:privilege name="http://developer.samsung.com/privilege/avplay"/>
+    <tizen:privilege name="http://developer.samsung.com/privilege/drmplay"/>
+    <tizen:privilege name="http://developer.samsung.com/privilege/productinfo"/>
+    <tizen:privilege name="http://developer.samsung.com/privilege/network.public"/>
+    <tizen:profile name="tv-samsung"/>
+    <tizen:setting
+        screen-orientation="landscape"
+        context-menu="enable"
+        encryption="disable"
+        install-location="auto"
+        hwkey-event="enable" />
+    <content src="index.html"/>
+    <icon src="icon.png"/>
+    <tizen:allow-navigation>*</tizen:allow-navigation>
+    <tizen:app-control>
+        <tizen:src name="index.html" reload="disable"></tizen:src>
+        <tizen:operation name="http://samsung.com/appcontrol/operation/eden_resume"></tizen:operation>
+    </tizen:app-control>
+    <tizen:metadata key="http://samsung.com/tv/metadata/use.preview" value="endpoint_URL=https://partners.com/tizen/smarthub-preview"></tizen:metadata>
+    <tizen:metadata key="http://samsung.com/tv/metadata/devel.api.version" value="2.4"></tizen:metadata>
+</widget>

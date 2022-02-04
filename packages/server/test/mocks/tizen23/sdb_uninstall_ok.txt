@@ -1,0 +1,5 @@
+uninstall APP_ID.App
+uninstall app, app_id[APP_ID.App]
+app_id[APP_ID.App] uninstall completed
+spend time for wascmd is [1761]ms
+cmd_ret:0

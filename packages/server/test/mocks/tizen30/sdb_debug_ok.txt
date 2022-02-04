@@ -1,0 +1,2 @@
+/usr/bin/app_launcher: unrecognized option '--timeout=1000'
+... successfully launched pid = 26540 with debug 1 port: 7011

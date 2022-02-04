@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  rtv:
+    build: .
+    image: ${IMAGE:-rtv}
+    network_mode: ${NETWORK_MODE:-bridge}
+    ports:
+      - "${PORT:-3000}:3000"
+      - "${STREAMS_PORT:-8081}:8081"
+    volumes:
+      - tvdata:/home/developer
+      - .:/app
+    init: true
+    environment:
+      - USER=rtv
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10M"
+        max-file: "10"
+
+volumes:
+  tvdata:

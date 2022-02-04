@@ -1,0 +1,35 @@
+{
+  "tvs": [
+    {
+      "id": "1",
+      "alias": "test",
+      "ip": "1.2.3.6",
+      "platform": "tizen",
+      "mac": "AA:AA:AA:AA:AA:AA"
+    },
+    {
+      "id": "2",
+      "alias": "",
+      "ip": "1.2.3.5",
+      "platform": "tizen",
+      "mac": "AA:AA:AA:AA:AA:AA"
+    }
+  ],
+  "apps": [
+    {
+      "id": "1",
+      "alias": "first",
+      "platform": "tizen",
+      "tizenAppId": "TESTABCDEF.First",
+      "description": "Tizen test App"
+    },
+    {
+      "id": "2",
+      "alias": "app2",
+      "platform": "tizen",
+      "tizenAppId": "TESTABCDEF.app2",
+      "description": "App with eval on debug",
+      "evalOnDebug": "function () { console.log(42) }"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+.table {
+  width: 100%;
+  border-spacing: 0;
+  border: 1px solid var(--monochrome-ghost);
+  border-radius: var(--border-radius-medium);
+  table-layout: fixed;
+  background-color: var(--monochrome-white);
+}

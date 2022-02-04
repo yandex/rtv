@@ -1,0 +1,42 @@
+:root {
+  --accent-orange: #f60;
+  --accent-orange-intens: #f25900;
+  --accent-orange-dark: #e54d00;
+  --accent-orange-super-dark: #c14000;
+
+  --system-bright-red: #ff0000;
+  --system-red: #e50000;
+  --system-apple-green: #3bb33b;
+  --system-yellow: #feb412;
+
+  --monochrome-white: #ffffff;
+  --monochrome-light-alabaster: #fcfcfc;
+  --monochrome-alabaster: #f7f7f7;
+  --monochrome-snow: #f2f2f2;
+  --monochrome-ghost: #e6e6e6;
+  --monochrome-light-silver: #d9d9d9;
+  --monochrome-silver: #aaaaaa;
+  --monochrome-light-gray: #777777;
+  --monochrome-charcoal: #141414;
+  --monochrome-nero: #0d0d0d;
+
+  --accent-orange-10: rgba(255, 102, 0, 0.1);
+  --accent-orange-25: rgba(255, 102, 0, 0.25);
+  --accent-orange-30: rgba(255, 102, 0, 0.3);
+  --accent-orange-50: rgba(255, 102, 0, 0.5);
+  --accent-orange-75: rgba(255, 102, 0, 0.75);
+
+  --box-shadow-extra-large: 0px 8px 40px rgba(0, 0, 0, 0.15);
+  --box-shadow-large: 0px 8px 40px rgba(0, 0, 0, 0.1);
+  --box-shadow-medium: 0px 4px 20px rgba(0, 0, 0, 0.04);
+
+  --border-radius-large: 20px;
+  --border-radius-medium: 12px;
+
+  --font-size-h1: 32px;
+  --font-size-h2: 24px;
+  --font-size-h3: 18px;
+  --font-size-h4: 16px;
+  --font-size-medium: 14px;
+  --font-size-small: 12px;
+}

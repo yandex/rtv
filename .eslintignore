@@ -1,0 +1,6 @@
+/packages/server/public/devtools
+/packages/server/dist
+/packages/client/dist
+/packages/cli/dist
+/packages/ui/build
+node_modules

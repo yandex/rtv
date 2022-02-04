@@ -1,0 +1,10 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "version": "1.21.1",
+  "ignoreChanges": [
+    "**/tests/**",
+    "**/*.md"
+  ]
+}

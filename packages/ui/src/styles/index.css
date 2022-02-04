@@ -1,0 +1,45 @@
+@import '../fonts/index.css';
+@import './variables.css';
+
+body {
+  min-width: 1280px;
+  box-sizing: border-box;
+  margin: 0;
+  background-color: var(--monochrome-light-alabaster);
+  color: var(--monochrome-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+button,
+input {
+  font-family: Graphik Kinopoisk LC Web, Arial, Tahoma, Verdana, sans-serif;
+  font-size: var(--font-size-medium);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+}
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: 600;
+}
+h4 {
+  font-size: var(--font-size-h4);
+  font-weight: 600;
+}

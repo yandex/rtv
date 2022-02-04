@@ -1,0 +1,5 @@
+ No                             Name          Version                                                             GUID       Package ID                   App ID
+ --                               --             ----                                                          -------            -----                    -----
+  1                     BasicProject            1.0.0                                   http://yourdomain/BasicProject       07wyKannVj  07wyKannVj.BasicProject
+ 10          App (test)            1.1.0                                                 http://app.ru       TESTABCDEF        TESTABCDEF.App
+ 12                           [NULL]          0.10.59                                      http://www.sra.samsung.com/       adplatform      adplatform.ADPlayer

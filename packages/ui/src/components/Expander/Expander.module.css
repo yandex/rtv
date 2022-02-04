@@ -1,0 +1,10 @@
+.root {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 0.5s, opacity 0.5s;
+}
+
+.root.open {
+  opacity: 1;
+}

@@ -1,0 +1,173 @@
+//Template based on {Tizen 2.4 IP}:8001/index.html and converted with http://html2jade.org/
+html
+  head(lang='en')
+    meta(charset='UTF-8')
+    title Debug Config
+    link(href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", crossorigin="anonymous")
+    //
+      Optional theme
+      <link rel="stylesheet" href="/resources/css/bootstrap-theme.min.css">
+    script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js', integrity='sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=', crossorigin='anonymous')
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js", integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM", crossorigin="anonymous")
+    style.
+      table.table-striped tr td:first-child{
+      width : 300px;
+      }
+      #devSettings label{
+      font-weight: normal;
+      }
+      #devSettings select{
+      padding: 5px;
+      height: auto;
+      margin-bottom: 20px;
+      width: auto;
+      min-width: 200px;
+      }
+  body
+    .container-fluid
+      .page-header
+        h1 MultiScreen Service
+      .panel.panel-default
+        .panel-heading Service Information
+        .panel-body
+          table.table.table-striped
+            tbody
+              tr
+                td VERSION
+                td #{info.msfVersion}
+              tr
+                td PORT
+                td 8001
+              tr
+                td SECUREPORT
+                td 8002
+              tr
+                td APIVERSION
+                td 2.0
+              tr
+                td REMOTEVERSION
+                td 1.0
+      .panel.panel-default
+        .panel-heading Memory Information
+        .panel-body
+          table.table.table-striped
+            tbody
+              tr
+                td RSS
+                td Unknown
+              tr
+                td HEAPTOTAL
+                td Unknown
+              tr
+                td HEAPUSED
+                td Unknown
+      .panel.panel-default
+        .panel-heading Device Information
+        .panel-body
+          table.table.table-striped
+            tbody
+              tr
+                td TYPE
+                td #{info.device.type}
+              tr
+                td DUID
+                td #{info.device.duid}
+              tr
+                td MODEL
+                td #{info.device.model}
+              tr
+                td MODELNAME
+                td #{info.device.modelName}
+              tr
+                td DESCRIPTION
+                td #{info.device.description}
+              tr
+                td NETWORKTYPE
+                td #{info.device.networkType}
+              tr
+                td SSID
+                td #{info.device.ssid}
+              tr
+                td IP
+                td #{info.device.ip}
+              tr
+                td FIRMWAREVERSION
+                td #{info.device.firmwareVersion}
+              tr
+                td NAME
+                td #{info.device.name}
+              tr
+                td ID
+                td #{info.device.uuid}
+              tr
+                td UDN
+                td #{info.device.udn}
+              tr
+                td RESOLUTION
+                td #{info.device.resolution}
+              tr
+                td COUNTRYCODE
+                td #{info.device.countryCode}
+              tr
+                td MSFVERSION
+                td #{info.device.msfVersion}
+              tr
+                td SMARTHUBAGREEMENT
+                td #{info.device.smartHubAgreement}
+              tr
+                td VOICESUPPORT
+                td Unknown
+              tr
+                td GAMEPADSUPPORT
+                td Unknown
+              tr
+                td WIFIMAC
+                td #{info.device.wifiMac}
+              tr
+                td DEVELOPERMODE
+                td #{info.device.developerMode}
+              tr
+                td DEVELOPERIP
+                td #{info.device.developerIP}
+              tr
+                td OS
+                td Tizen
+      .panel.panel-default
+        .panel-heading
+          | Developer Options    
+          a(href=baseUrl + 'logs/', target='ms-logger', style='color:greenyellow;') View Logs
+        #devSettings.panel-body
+          label(for='logLevel') Logging Level
+          select#logLevel.form-control(name='logLevel')
+            option(value='error') ERROR
+            option(value='warn') WARN
+            option(value='info') INFO
+            option(value='verbose') VERBOSE
+            option(value='debug', selected='') DEBUG
+            option(value='silly') SILLY
+          .checkbox
+            label
+              input#allowAllContent(type='checkbox', value='allow', name='allowAllContent')
+              |                         Allow All Content (unchecked by default)
+          img(src=baseUrl + 'captcha.png')
+          .captcha.form-group
+            label
+              input#captchaAnswer.form-control(checked='', type='text', value='', name='captchaAnswer')
+              |                         Enter text above to submit
+          button#submit.btn.btn-primary(type='button') Submit
+    script.
+      var uiLogLevel = $('#logLevel');
+      var uiAllowAllContent = $('#allowAllContent');
+      var captchaAnswer = $('#captchaAnswer');
+      var submit = $('#submit');
+      function onUpdateSuccess(data){
+      alert(data);
+      }
+      function onUpdateError(error){
+      alert(error.statusText);
+      window.location.reload();
+      }
+      submit.on('click',function(){
+      console.log('submitting setting change ::');
+      $.post( '#{baseUrl}' + 'settings', {captchaAnswer:captchaAnswer.val(), allowAllContent:uiAllowAllContent.prop('checked'), logLevel:uiLogLevel.val()}).done(onUpdateSuccess).fail(onUpdateError);
+      });

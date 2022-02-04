@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.text {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

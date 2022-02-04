@@ -1,0 +1,44 @@
+.option {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.status {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  margin-right: 12px;
+  border-radius: 50%;
+}
+
+.statusOn {
+  composes: status;
+  background-color: var(--system-apple-green);
+}
+
+.statusOff {
+  composes: status;
+  background-color: var(--system-bright-red);
+}
+
+.tvText {
+  font-weight: 500;
+  line-height: 18px;
+  margin-bottom: 8px;
+}
+
+.additionalInfo {
+  line-height: 15px;
+  font-size: var(--font-size-small);
+}
+
+.ipText {
+  color: var(--monochrome-silver);
+}
+
+.occupiedIcon {
+  fill: var(--system-red);
+  margin-left: 8px;
+  margin-right: 4px;
+}

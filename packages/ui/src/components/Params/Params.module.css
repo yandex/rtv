@@ -1,0 +1,61 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 32px;
+}
+
+.editor {
+  flex-grow: 1;
+  border: 1px solid var(--monochrome-ghost);
+  border-radius: var(--border-radius-medium);
+}
+
+.editor :global(.ace_gutter) {
+  z-index: auto;
+  background-color: var(--monochrome-white);
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.helpButton {
+  padding: 8px;
+}
+
+.reset {
+  padding: 7px 12px;
+  line-height: 18px;
+}
+
+:global(.paramsPopup-content) {
+  background-color: white;
+  border-radius: var(--border-radius-medium);
+  padding: 32px;
+  box-shadow: var(--box-shadow-extra-large);
+}
+
+.codeSnippet {
+  max-width: 50vw;
+  max-height: 50vh;
+  overflow: auto;
+  font-family: Menlo;
+  margin: 0;
+}
+
+.popupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.closeButton {
+  padding: 6px;
+  border-radius: 50%;
+}

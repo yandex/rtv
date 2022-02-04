@@ -1,0 +1,28 @@
+{
+  "id": "uuid:edbf9524-c4cb-43b0-b522-a0f588423f49",
+  "name": "[TV] UE40J6390",
+  "version": "2.0.25",
+  "device": {
+    "type": "Samsung SmartTV",
+    "duid": "uuid:edbf9524-c4cb-43b0-b522-a0f588423f49",
+    "model": "15_HAWKM_2D",
+    "modelName": "UE40J6330",
+    "description": "Samsung DTV RCR",
+    "networkType": "wireless",
+    "ssid": "cc:46:d6:09:e9:ac",
+    "ip": "1.2.3.6",
+    "firmwareVersion": "Unknown",
+    "name": "[TV] UE40J6390",
+    "id": "uuid:edbf9524-c4cb-43b0-b522-a0f588423f49",
+    "udn": "uuid:edbf9524-c4cb-43b0-b522-a0f588423f49",
+    "resolution": "1920x1080",
+    "countryCode": "RU",
+    "msfVersion": "2.0.25",
+    "smartHubAgreement": "true",
+    "wifiMac": "BC:14:85:AC:F3:90",
+    "developerMode": "0",
+    "developerIP": "1.1.1.1"
+  },
+  "type": "Samsung SmartTV",
+  "uri": "http://1.2.3.6:8001/api/v2/"
+}

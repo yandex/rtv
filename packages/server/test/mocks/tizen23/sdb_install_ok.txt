@@ -1,0 +1,30 @@
+Transferring the package...
+Transferred the package: /tmp/rtv-server/App.wgt -> /opt/usr/apps/tmp
+Installing the package...
+--------------------
+Platform log view
+--------------------
+install APP_ID.App
+packet_path /opt/usr/apps/tmp/App.wgt
+install app, app_id[APP_ID.App], packet_path[/opt/usr/apps/tmp/App.wgt], install_path[]
+app_id[APP_ID.App] installing[3]
+app_id[APP_ID.App] installing[23]
+app_id[APP_ID.App] installing[26]
+app_id[APP_ID.App] installing[34]
+app_id[APP_ID.App] installing[38]
+app_id[APP_ID.App] installing[42]
+app_id[APP_ID.App] installing[46]
+app_id[APP_ID.App] installing[53]
+app_id[APP_ID.App] installing[61]
+app_id[APP_ID.App] installing[65]
+app_id[APP_ID.App] installing[80]
+app_id[APP_ID.App] installing[84]
+app_id[APP_ID.App] installing[88]
+app_id[APP_ID.App] installing[92]
+app_id[APP_ID.App] installing[96]
+app_id[APP_ID.App] installing[100]
+app_id[APP_ID.App] install completed
+spend time for wascmd is [6422]ms
+cmd_ret:0
+An error has occurred. See the log file tizen-sdk/tools/ide/cli.log.
+Total time: 00:00:10.923

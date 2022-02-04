@@ -1,0 +1,15 @@
+Transferring the package...
+Transferred the package: /tmp/rtv-server/App.wgt -> /opt/usr/apps/tmp
+Installing the package...
+--------------------
+Platform log view
+--------------------
+install TESTABCDEF.App
+package_path /opt/usr/apps/tmp/App.wgt
+was_install_app return WAS_TRUE
+app_id[TESTABCDEF.App] install start
+app_id[TESTABCDEF.App] install completed
+spend time for wascmd is [5320]ms
+cmd_ret:0
+Failed to install Tizen application.
+Total time: 00:00:06.977

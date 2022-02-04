@@ -1,0 +1,24 @@
+.edit {
+  border-bottom: 2px solid var(--accent-orange);
+}
+
+.okIcon {
+  fill: var(--monochrome-white);
+}
+
+.deleteIcon {
+  fill: var(--monochrome-silver);
+}
+
+.iconButton {
+  padding: 8px;
+}
+
+.primaryIconButton {
+  composes: iconButton;
+}
+
+.secondaryIconButton {
+  composes: iconButton;
+  margin-left: 16px;
+}

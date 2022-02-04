@@ -1,0 +1,6 @@
+
+(process:2002): GLib-CRITICAL **: g_variant_new_string: assertion `string != NULL' failed
+
+(process:2002): GLib-CRITICAL **: g_variant_new_string: assertion `string != NULL' failed
+Pkgid: TESTABCDEF is already Terminated
+spend time for pkgcmd is [389]ms

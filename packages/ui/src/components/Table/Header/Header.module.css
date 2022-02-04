@@ -1,0 +1,11 @@
+.row {
+  height: 50px;
+}
+
+.cell {
+  border-bottom: 1px solid var(--monochrome-ghost);
+}
+
+.content {
+  padding: 16px 0;
+}
