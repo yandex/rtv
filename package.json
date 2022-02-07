@@ -58,7 +58,6 @@
     "@types/multer": "^1.4.7",
     "@types/node": "^16.11.9",
     "@types/node-fetch": "^2.5.12",
-    "@types/promise.any": "^2.0.0",
     "@types/semver": "^7.3.9",
     "@types/sinon": "5.0.0",
     "@types/unzipper": "^0.10.4",

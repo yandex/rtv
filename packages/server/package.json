@@ -1,6 +1,6 @@
 {
   "name": "rtv-server",
-  "version": "1.21.1",
+  "version": "2.0.0",
   "description": "Remote TV control server for developers",
   "scripts": {
     "clean:dist": "rm -rf dist",
@@ -47,7 +47,6 @@
     "node-fetch": "^2.6.6",
     "p-retry": "^4.2.0",
     "promise-controller": "^0.5.2",
-    "promise.any": "^2.0.1",
     "pug": "^3.0.2",
     "raw-body": "^2.4.1",
     "read-pkg-up": "^6.0.0",
