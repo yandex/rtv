@@ -49,9 +49,9 @@ They should be created [here](https://us.lgaccount.com/) and are used for login 
 ### Setup without Docker
 
 1. Install and configure [rtv-server](packages/server/README.md)
-2.
-3. Install and configure [rtv-cli](packages/cli/README.md)
-4. For programmatic usage with Node.JS or Browser JS please install [rtv-client](packages/client/README.md)
+2. Run [rtv-ui](packages/ui/README.md)
+3. Install and configure [rtv-cli](packages/cli/README.md) if you need it
+4. For programmatic usage with Node.JS or Browser JavaScript please install [rtv-client](packages/client/README.md)
 
 ## Development
 
@@ -110,7 +110,7 @@ It is necessary that the working computer and the TV are on the same local netwo
 
 2. Specify `Developer IP` on the TV:
     - open `Apps` (application `Applications` on the TV)
-    - press the buttons on the `12345` remote control in turn until the input window appears (it may not work the first time)
+    - press the buttons `1-2-3-4-5`  in turn on the remote control until the input window appears (it may not work the first time)
     - in the window that appears, enable `Developer mode`, if it is not enabled yet, and enter the ip address of your rtv-server as Developer IP
     - reboot the TV (long press the power button on the remote)
 
