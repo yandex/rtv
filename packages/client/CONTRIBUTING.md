@@ -3,7 +3,7 @@
 
 ## General info
 
-Hello! In order for us (YANDEX LLC) to accept patches and other contributions from you, you will have to adopt our Yandex Contributor License Agreement (the â€œ**CLA**â€). The current version of the CLA can be found here:
+Hello! In order for us (YANDEX LLC) to accept patches and other contributions from you, you will have to adopt our Yandex Contributor License Agreement (the **CLA**). The current version of the CLA can be found here:
 1) https://yandex.ru/legal/cla/?lang=en (in English) and
 2) https://yandex.ru/legal/cla/?lang=ru (in Russian).
 
