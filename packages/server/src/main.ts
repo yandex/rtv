@@ -8,7 +8,6 @@ import Loggee from 'loggee';
 import cookieParser from 'cookie-parser';
 import 'express-async-errors';
 import cors from 'cors';
-import './polifills';
 import { values as config } from './config';
 import api from './api';
 import web from './web';
