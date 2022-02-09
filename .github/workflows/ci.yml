@@ -1,5 +1,11 @@
 name: RTV CI
-on: [pull_request, push]
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
 jobs:
   ci:
     runs-on: ubuntu-latest
