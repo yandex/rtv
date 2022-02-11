@@ -3,13 +3,11 @@
  */
 import fs from 'fs-extra';
 import Loggee from 'loggee';
-import { getKnownTv } from '../../api/tv/service';
 import * as network from '../../helpers/network';
 import { tryExecCmd } from '../../helpers/cli';
 import { waitForFunction } from '../../helpers/wait-for-function';
 import { getAliasByAppId } from '../../api/app/service';
 import { proxyUrlAsPath } from '../../proxy/helper';
-import { TVInfo } from '../../api/tv/types';
 import { MsfInfo } from './tv';
 import * as discovery from './discovery';
 import * as appPackager from './app-packager';
@@ -200,7 +198,7 @@ export const launchBrowser = async function (tvIP: string, url: string) {
     }
     const appId = 'org.tizen.browser';
     await channel.launchApp(appId, { metaTag: url || '' });
-    return { appId, url, launched: true };
+    return `Launched browser with URL ${url}`;
   } finally {
     await channel.disconnect();
   }
@@ -235,7 +233,7 @@ export const enableDevMode = async function () {
   throw new Error('Not implemented');
 };
 
-function unifyTVInfo(info: MsfInfo, myIPs: string[]): Omit<TVInfo, 'lastUsed' | 'osVersion'> {
+function unifyTVInfo(info: MsfInfo, myIPs: string[]) {
   const { ip, name, modelName, developerIP, developerMode, resolution, model } = info.device;
   const modelYear = model.split('_')[0];
   const isDeveloperModeOn = developerMode === '1';
@@ -244,11 +242,8 @@ function unifyTVInfo(info: MsfInfo, myIPs: string[]): Omit<TVInfo, 'lastUsed' | 
     (isDeveloperModeOn || modelYear === '15') &&
     myIPs.includes(developerIP) &&
     network.areInSameSubnet(ip, developerIP);
-  const tvConfig = getKnownTv(ip) || {};
-  const { alias = '', streamUrl = '', isVisible } = tvConfig;
 
   return {
-    platform: 'tizen',
     ip,
     name,
     modelName,
@@ -257,8 +252,5 @@ function unifyTVInfo(info: MsfInfo, myIPs: string[]): Omit<TVInfo, 'lastUsed' | 
     developerMode: isDeveloperModeOn,
     developerIP,
     hasAccess,
-    alias,
-    streamUrl,
-    isVisible,
   };
 }
