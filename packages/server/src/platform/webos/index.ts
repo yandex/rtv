@@ -6,10 +6,10 @@ import fetch from 'node-fetch';
 import _ from 'lodash';
 import Loggee from 'loggee';
 import { tryExecCmd } from '../../helpers/cli';
-import { getKnownTv, getKnownTvById } from '../../api/tv/service';
+import { getKnownTvById } from '../../api/tv/service';
 import { getAliasByAppId } from '../../api/app/service';
 import { waitForFunction } from '../../helpers/wait-for-function';
-import { KnownTv, TVInfo } from '../../api/tv/types';
+import { KnownTv } from '../../api/tv/types';
 import * as discovery from './discovery';
 import WebOSTV, { WebosTvParams } from './tv';
 import WebOSApp from './app';
@@ -17,7 +17,7 @@ import WebOSAppDebugger from './app-debugger';
 import WebosWsRemoteControl from './ws-remote-control';
 import { packIpkApp } from './app-packager';
 import remoteKeys from './remote-keys';
-import { enableDevMode as runDevMode } from './dev-mode';
+import { enableDevMode as runDevMode, extendDevMode } from './dev-mode';
 import { WebosDeviceInfoExtended } from './discovery';
 
 const logger = Loggee.create('webos');
@@ -248,18 +248,23 @@ export const isDevMode = async function (tvIP: string) {
 };
 
 export const enableDevMode = async function (tvIP: string) {
+  const tvName = await getNameByIp(tvIP);
+  const extended = await extendDevMode(tvName);
+  if (extended) {
+    return 'Dev Mode extended';
+  }
+
   const remoteControl = new WebosWsRemoteControl(tvIP);
   await remoteControl.connect();
-
   await runDevMode(remoteControl);
+
+  return 'Dev Mode enabled';
 };
 
-async function unifyTVInfo(tvInfo: WebosDeviceInfoExtended): Promise<TVInfo> {
+async function unifyTVInfo(tvInfo: WebosDeviceInfoExtended) {
   const { ip, name, modelName, modelYear, sdkVersion, firmwareVersion, boardType, resolution } = tvInfo;
-  const tvConfig = getKnownTv(ip) || {};
   const developerMode = await isDevMode(ip);
   return {
-    ...tvConfig,
     ip,
     name,
     developerMode,

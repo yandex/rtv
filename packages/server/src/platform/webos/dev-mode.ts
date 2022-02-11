@@ -1,7 +1,7 @@
 /* eslint-disable max-statements */
 import Timeout from 'await-timeout';
-import { throwIf } from '../../helpers';
 import { values as config } from '../../config';
+import { execCmd } from '../../helpers/cli';
 import WebosWsRemoteControl from './ws-remote-control';
 
 const sleep = async (ms: number) => Timeout.set(ms);
@@ -51,15 +51,13 @@ export const enableDevMode = async function (remoteControl: WebosWsRemoteControl
   await remoteControl.sendKey('ENTER');
 };
 
-export const extendDevMode = async function (remoteControl: WebosWsRemoteControl) {
-  await launchDevMode(remoteControl);
-
-  //do: push Extend button
-  await remoteControl.sendKey('DOWN');
-  await sleep(1000);
-  await remoteControl.sendKey('DOWN');
-  await sleep(1000);
-  await remoteControl.sendKey('ENTER');
+export const extendDevMode = async function (deviceName: string) {
+  try {
+    await execCmd(`ares-extend-dev -d ${deviceName}`);
+    return true;
+  } catch (e) {
+    return false;
+  }
 };
 
 async function launchDevMode(remoteControl: WebosWsRemoteControl) {

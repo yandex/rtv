@@ -129,7 +129,7 @@ export default class TV extends ApiBase {
   /**
    * Enable Developer Mode (for WebOS only)
    */
-  async enableDevMode(ip: string) {
+  async enableDevMode(ip: string): Promise<string> {
     return this._request({
       path: 'tv/dev-mode/enable',
       queryObj: { ip },
