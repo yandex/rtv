@@ -13,7 +13,10 @@ import { assertError, getMock, req, reqJson, reqPostJson, stubCmd, stubWS } from
 
 describe('tv', () => {
   describe('info', () => {
-    before(async () => reqPostJson('api/tv/free?ip=1.2.3.5', {}));
+    before(async () => {
+      reqPostJson('api/tv/free?ip=1.2.3.5', {});
+      reqPostJson('api/tv/free?ip=1.2.3.6', {});
+    });
 
     it('tv did not respond', async () => {
       nock('http://1.2.3.5:8001').get('/api/v2/').delay(3001).reply(200, '');
@@ -36,8 +39,10 @@ describe('tv', () => {
       nock('http://1.2.3.5:8001').get('/api/v2/').reply(200, response);
       const result = await reqJson('api/tv/info?ip=1.2.3.5');
       assert.deepEqual(result, {
+        id: '2',
         platform: 'tizen',
         ip: '1.2.3.5',
+        mac: 'AA:AA:AA:AA:AA:AA',
         name: '[TV] Kitchen',
         modelName: 'UE49K5500',
         modelYear: '16',
@@ -47,7 +52,6 @@ describe('tv', () => {
         hasAccess: false,
         osVersion: null,
         alias: '',
-        streamUrl: '',
         lastUsed: 'unknown',
       });
     });
@@ -60,8 +64,10 @@ describe('tv', () => {
       stubCmd('sdb -s 1.2.3.5 capability', getMock('tizen24/sdb_capability.txt'));
       const result = await reqJson('api/tv/info?ip=1.2.3.5');
       assert.deepEqual(result, {
+        id: '2',
         platform: 'tizen',
         ip: '1.2.3.5',
+        mac: 'AA:AA:AA:AA:AA:AA',
         name: '[TV] Kitchen',
         modelName: 'UE49K5500',
         modelYear: '16',
@@ -71,7 +77,6 @@ describe('tv', () => {
         hasAccess: true,
         osVersion: '2.4.0',
         alias: '',
-        streamUrl: '',
         lastUsed: 'unknown',
       });
     });
@@ -81,7 +86,9 @@ describe('tv', () => {
       const result = await reqJson('api/tv/info?ip=1.2.3.5');
       assert.deepEqual(result, {
         platform: 'tizen',
+        id: '2',
         ip: '87.250.238.242',
+        mac: 'AA:AA:AA:AA:AA:AA',
         name: '[TV] Galina',
         modelName: 'UE40MU6100',
         modelYear: '17',
@@ -91,18 +98,19 @@ describe('tv', () => {
         hasAccess: false,
         osVersion: null,
         alias: '',
-        streamUrl: '',
         lastUsed: 'unknown',
       });
     });
 
     it('tizen23 + no access', async () => {
       const response = getMock('tizen23/msf_tv_info.json');
-      nock('http://1.2.3.5:8001').get('/api/v2/').reply(200, response);
-      const result = await reqJson('api/tv/info?ip=1.2.3.5');
+      nock('http://1.2.3.6:8001').get('/api/v2/').reply(200, response);
+      const result = await reqJson('api/tv/info?ip=1.2.3.6');
       assert.deepEqual(result, {
         platform: 'tizen',
+        id: '1',
         ip: '1.2.3.6',
+        mac: 'AA:AA:AA:AA:AA:AA',
         name: '[TV] UE40J6390',
         modelName: 'UE40J6330',
         modelYear: '15',
@@ -112,7 +120,6 @@ describe('tv', () => {
         hasAccess: false,
         osVersion: null,
         alias: 'test',
-        streamUrl: '',
         lastUsed: 'unknown',
       });
     });
@@ -120,13 +127,15 @@ describe('tv', () => {
     it('tizen23 + has access', async () => {
       const response = getMock('tizen23/msf_tv_info.json');
       response.device.developerIP = '1.2.3.4';
-      nock('http://1.2.3.5:8001').persist().get('/api/v2/').reply(200, response);
-      stubCmd('sdb connect 1.2.3.5', getMock('tizen23/sdb_connect_ok.txt'));
-      stubCmd('sdb -s 1.2.3.5 capability', getMock('tizen23/sdb_capability.txt'));
-      const result = await reqJson('api/tv/info?ip=1.2.3.5');
+      nock('http://1.2.3.6:8001').persist().get('/api/v2/').reply(200, response);
+      stubCmd('sdb connect 1.2.3.6', getMock('tizen23/sdb_connect_ok.txt'));
+      stubCmd('sdb -s 1.2.3.6 capability', getMock('tizen23/sdb_capability.txt'));
+      const result = await reqJson('api/tv/info?ip=1.2.3.6');
       assert.deepEqual(result, {
         platform: 'tizen',
+        id: '1',
         ip: '1.2.3.6',
+        mac: 'AA:AA:AA:AA:AA:AA',
         name: '[TV] UE40J6390',
         modelName: 'UE40J6330',
         modelYear: '15',
@@ -136,7 +145,6 @@ describe('tv', () => {
         hasAccess: true,
         osVersion: '2.3.0',
         alias: 'test',
-        streamUrl: '',
         lastUsed: 'unknown',
       });
     });
@@ -202,9 +210,7 @@ describe('tv', () => {
       method: 'post',
     });
     assert.deepEqual(result, {
-      appId: 'org.tizen.browser',
-      url: 'http://google.com',
-      launched: true,
+      result: 'Launched browser with URL http://google.com',
     });
   });
 
@@ -241,9 +247,7 @@ describe('tv', () => {
       method: 'post',
     });
     assert.deepEqual(result, {
-      appId: 'org.tizen.browser',
-      url: 'http://google.com',
-      launched: true,
+      result: 'Launched browser with URL http://google.com',
     });
   });
 
@@ -278,9 +282,7 @@ describe('tv', () => {
       method: 'post',
     });
     assert.deepEqual(result, {
-      appId: 'org.tizen.browser',
-      url: 'http://google.com',
-      launched: true,
+      result: 'Launched browser with URL http://google.com',
     });
   });
 

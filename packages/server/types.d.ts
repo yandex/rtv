@@ -9,7 +9,7 @@ export type {
   FileInfo,
 } from './src/api/app/types';
 
-export type { KnownTv, TVInfo, Platform } from './src/api/tv/types';
+export type { KnownTv, TVInfo, Platform, Result } from './src/api/tv/types';
 
 export type { RoomInfo } from './src/api/room/types';
 
