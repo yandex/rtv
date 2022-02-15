@@ -1,4 +1,4 @@
-import { TVInfo, KnownTv } from 'rtv-server';
+import { TVInfo, KnownTv, Result } from 'rtv-server';
 import { WsRemoteControl } from '../remote-control/ws-remote-control';
 import ApiBase from './common/api-base';
 
@@ -129,7 +129,7 @@ export default class TV extends ApiBase {
   /**
    * Enable Developer Mode (for WebOS only)
    */
-  async enableDevMode(ip: string) {
+  async enableDevMode(ip: string): Promise<Result> {
     return this._request({
       path: 'tv/dev-mode/enable',
       queryObj: { ip },

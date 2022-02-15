@@ -13,7 +13,7 @@ import { formatLastUsedInfo, freeTv as free, getTvLastUsed, whoIsUsingTv } from 
 import * as wol from '../../platform/shared/smart-wol';
 import { getAppByAppId } from '../app/service';
 import * as TvService from './service';
-import { KnownTv } from './types';
+import { KnownTv, RemoteControlInfo, Result, TVInfo, URLInfo } from './types';
 
 const logger = Loggee.create();
 const READY_TIMEOUT = 1000;
@@ -62,32 +62,32 @@ export const getTvList = async (req: Request, res: Response<KnownTv[]>) => {
   res.json(devices);
 };
 
-export const getTvInfo = async (req: Request, res: Response) => {
+export const getTvInfo = async (req: Request, res: Response<TVInfo>) => {
   const info = await platform.getTVInfo(req.query.ip as string);
   res.json(info);
 };
 
-export const getDevPanelUrl = async (req: Request, res: Response) => {
+export const getDevPanelUrl = async (req: Request, res: Response<URLInfo>) => {
   const relativeUrl = await platform.getDevPanelUrl(req.query.ip as string);
   const origin = getServerOrigin(req);
   const url = `${origin}${relativeUrl}`;
   res.json({ url });
 };
 
-export const getLogsUrl = async (req: Request, res: Response) => {
+export const getLogsUrl = async (req: Request, res: Response<URLInfo>) => {
   const relativeUrl = await platform.getLogsUrl(req.query.ip as string);
   const origin = getServerOrigin(req);
   const url = `${origin}${relativeUrl}`;
   res.json({ url });
 };
 
-export const launchBrowser = async (req: Request, res: Response) => {
+export const launchBrowser = async (req: Request, res: Response<Result>) => {
   const { ip, url } = req.query as Record<string, string>;
-  const info = await platform.launchBrowser(ip, url);
-  res.json(info);
+  const result = await platform.launchBrowser(ip, url);
+  res.json({ result });
 };
 
-export const wakeUpTv = async (req: Request, res: Response) => {
+export const wakeUpTv = async (req: Request, res: Response<Result>) => {
   const { ip } = req.query as Record<string, string>;
   const port = await platform.getWakeUpPort(ip);
   if (!port) {
@@ -100,10 +100,10 @@ export const wakeUpTv = async (req: Request, res: Response) => {
   }
 
   await platform.waitForReady(ip);
-  res.json(`Wake up tv with ip ${ip}`);
+  res.json({ result: `Wake up tv with ip ${ip}` });
 };
 
-export const getRemoteControlWsInfo = async (req: Request, res: Response) => {
+export const getRemoteControlWsInfo = async (req: Request, res: Response<RemoteControlInfo>) => {
   const { ip } = req.query as Record<string, string>;
   const remoteInfo = await platform.getRemoteControlWsInfo(ip);
   const wsUrl = new URL(`${getServerOriginWs(req)}${proxyUrlAsPath(remoteInfo.rawWsUrl)}`);
@@ -111,18 +111,18 @@ export const getRemoteControlWsInfo = async (req: Request, res: Response) => {
   res.json({ ...remoteInfo, wsUrl: wsUrl.href });
 };
 
-export const enableDevMode = async (req: Request, res: Response) => {
-  await platform.enableDevMode(req.query.ip as string);
-  res.end();
+export const enableDevMode = async (req: Request, res: Response<Result>) => {
+  const result = await platform.enableDevMode(req.query.ip as string);
+  res.json({ result });
 };
 
-export const freeTv = async (req: Request, res: Response) => {
+export const freeTv = async (req: Request, res: Response<Result>) => {
   const { ip } = req.query as Record<string, string>;
   free(ip);
-  res.json(`TV ${ip} is free now`);
+  res.json({ result: `TV ${ip} is free now` });
 };
 
-export const getWidgetlist = async (req: Request, res: Response) => {
+export const getWidgetlist = async (req: Request, res: Response<string>) => {
   const tv = TvService.getKnownTv(req.ip);
   if (!tv || !tv.pkgUrls) {
     send404(`No pkg URLs found for tv ${req.ip}`, req, res);

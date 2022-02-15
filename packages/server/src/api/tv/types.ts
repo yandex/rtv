@@ -1,19 +1,15 @@
 /**
- * TV info
+ * Extended TV info
  */
-export interface TVInfo {
+export interface TVInfo extends SavedTv {
   /**
-   * platform
+   * Last used
    */
-  platform: string;
-  /**
-   * TV IP
-   */
-  ip: string;
+  lastUsed: string;
   /**
    * TV name
    */
-  name: string;
+  name?: string;
   /**
    * TV model year
    */
@@ -25,7 +21,7 @@ export interface TVInfo {
   /**
    * is developer mode enabled
    */
-  developerMode: boolean;
+  developerMode?: boolean;
   /**
    * developer IP
    */
@@ -35,47 +31,15 @@ export interface TVInfo {
    */
   hasAccess?: boolean;
   /**
-   * TV alias
-   */
-  alias: string;
-  /**
-   * who and when last used TV
-   */
-  lastUsed?: string;
-  /**
    * TV OS verion
    */
-  osVersion?: string;
-  /**
-   * MAC
-   */
-  mac?: string;
+  osVersion?: string | null;
   /**
    * Model Name
    */
   modelName?: string;
   /**
-   * Passphrase
-   */
-  webOSPassphrase?: string;
-  /**
-   * Client Key
-   */
-  webOSClientKey?: string;
-  /**
-   * Stream Url
-   */
-  streamUrl?: string;
-  /**
-   * Is Visible flag
-   */
-  isVisible?: boolean;
-  /**
-   * Id
-   */
-  id?: string;
-  /**
-   * firmwareVersion
+   * FirmwareVersion
    */
   firmwareVersion?: string;
   /**
@@ -131,7 +95,7 @@ interface PkgInfo {
 
 export type Platform = 'webos' | 'tizen' | 'orsay' | 'playstation';
 
-export interface KnownTv {
+export interface SavedTv {
   /**
    * Internal TV id
    */
@@ -165,23 +129,68 @@ export interface KnownTv {
    */
   pkgUrls?: Record<string, PkgInfo | undefined>;
   /**
-   * Online
+   * Is visible
    */
-  online?: boolean;
+  isVisible?: boolean;
   /**
    * Stream URL
    */
   streamUrl?: string;
+}
+
+export interface KnownTv extends SavedTv {
+  /**
+   * Online
+   */
+  online?: boolean;
   /**
    * Last used
    */
   lastUsed?: string;
   /**
-   * Is visible
-   */
-  isVisible?: boolean;
-  /**
    * Occupied by
    */
   occupied?: string | null;
+}
+
+/**
+ * URL info
+ */
+export interface URLInfo {
+  /**
+   * URL
+   */
+  url: string;
+}
+
+/**
+ * Result
+ */
+export interface Result {
+  /**
+   * Operation result
+   */
+  result: string;
+}
+
+/**
+ * Remote control data
+ */
+export interface RemoteControlInfo {
+  /**
+   * Proxied websocket URL
+   */
+  wsUrl: string;
+  /**
+   * Raw websocket URL
+   */
+  rawWsUrl: string;
+  /**
+   * Remote keys
+   */
+  keys: Record<string, string>;
+  /**
+   * Websocket message payload pattern
+   */
+  payloadPattern: string;
 }

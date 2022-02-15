@@ -90,8 +90,10 @@ export const discoverTVs = async function () {
  * Get info about TV.
  */
 export const getTVInfo = async function (tvIP: string) {
+  const knownTv = getKnownTv(tvIP);
   const tvInfo = await getPlatform(tvIP).getTVInfo(tvIP);
   return {
+    ...knownTv,
     ...tvInfo,
     lastUsed: formatLastUsedInfo(getTvLastUsed(tvIP)),
   };

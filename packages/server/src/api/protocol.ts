@@ -51,7 +51,7 @@ export const send404 = function (message: string, _req: Request, res: Response) 
   sendJson({ message }, res);
 };
 
-export const sendXml = function (xml: string, res: Response) {
+export const sendXml = function (xml: string, res: Response<string>) {
   res.set('Content-Type', 'text/xml');
   res.send(xml);
 };

@@ -3,7 +3,7 @@
  */
 import fetch from 'node-fetch';
 
-import { getKnownTvs, getKnownTv } from '../../api/tv/service';
+import { getKnownTvs } from '../../api/tv/service';
 import { NotNullOrUndefined } from '../../helpers';
 
 const DEBUG_PORT = 1900;
@@ -52,10 +52,9 @@ export const isReady = async function (ip: string, timeout?: number) {
  *
  * @returns {Promise<Object>}
  */
-export const getTVInfo = async function (ip: string) {
-  return getKnownTv(ip);
+export const getTVInfo = async function () {
+  return {};
 };
-
 /**
  * Wait until TV is ready
  */

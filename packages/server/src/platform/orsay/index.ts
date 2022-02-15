@@ -217,20 +217,14 @@ export const enableDevMode = async function () {
 
 function unifyTVInfo(info: MsfInfo) {
   const { ip, name, modelName, resolution } = info.device;
-  const tvConfig = getKnownTv(ip) || {};
-  const { alias = '', streamUrl = '', isVisible } = tvConfig;
 
   return {
-    platform: 'orsay',
     ip,
     name,
     modelName,
     resolution,
     developerMode: true,
     hasAccess: true,
-    alias,
-    streamUrl,
-    isVisible,
   };
 }
 

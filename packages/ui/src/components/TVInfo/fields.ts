@@ -21,9 +21,10 @@ export const fieldNameMap: Record<keyof TVInfo, string> = {
   webOSClientKey: 'Client Key',
   boardType: 'Board Type',
   firmwareVersion: 'Firmware Version',
+  pkgUrls: 'Uploaded packages',
 };
 
-const hiddenFields: (keyof TVInfo)[] = ['ip', 'isVisible', 'alias', 'streamUrl'];
+const hiddenFields: (keyof TVInfo)[] = ['ip', 'isVisible', 'alias', 'streamUrl', 'pkgUrls'];
 const hiddenPlatformFields: Partial<Record<Platform, (keyof TVInfo)[]>> = {
   webos: ['name', 'webOSClientKey'],
 };
