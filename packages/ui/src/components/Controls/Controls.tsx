@@ -125,7 +125,12 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
       <Tooltip id={styles.tooltip} effect="solid" arrowColor="transparent" />
       <div className={styles.buttonsGroup}>
         {appState?.installed === false ? (
-          <Button className={styles.installButton} disabled={applicationControl.disabled} tooltipId={styles.tooltip}>
+          <Button
+            className={styles.installButton}
+            disabled={applicationControl.disabled}
+            tooltipId={styles.tooltip}
+            tooltipText={applicationControl.disableReason}
+          >
             <input type="file" accept=".ipk,.wgt,.zip" onChange={onAppInstall} />
             Install
           </Button>
