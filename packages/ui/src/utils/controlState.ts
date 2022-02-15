@@ -15,7 +15,7 @@ const TV_OFFLINE = 'TV is offline';
 const TV_OCCUPIED = 'TV is occupied. Try later';
 const NOT_SUPPORTED_BY_PLATFORM = 'Not supported by platform';
 const MAC_NOT_SPECIFIED = 'MAC is not specified for TV';
-const APP_NOT_SELECTED = 'Application not selected';
+const APP_NOT_SELECTED = 'Application is not selected';
 
 export const getControlState = (props: ControlStateInfo) => {
   const { tv, username, appId } = props;
