@@ -22,7 +22,7 @@ const logError = (message: unknown) => {
   error(convertToLogMessage(message));
 };
 
-const execCmd = async <T>(promise: Promise<T>, { logResult = false, logErrors = true } = {}) => {
+const execCmd = async <T>(promise: Promise<T>, { logResult = false, logErrors = true, throwOnError = true } = {}) => {
   try {
     const result = await promise;
     if (logResult) {
@@ -33,7 +33,9 @@ const execCmd = async <T>(promise: Promise<T>, { logResult = false, logErrors = 
     if (logErrors) {
       logError(error instanceof Error ? error.message || error : error);
     }
-    throw error;
+    if (throwOnError) {
+      throw error;
+    }
   }
 };
 
@@ -42,7 +44,7 @@ export async function fetchTvInfo(ip: string) {
 }
 
 export async function getAppState(ip: string, id: string) {
-  return execCmd(rtvClient.app.stateApp(ip, id), { logResult: false, logErrors: false });
+  return execCmd(rtvClient.app.stateApp(ip, id), { logResult: false, logErrors: false, throwOnError: false });
 }
 
 export async function appClose(ip: string, id: string) {

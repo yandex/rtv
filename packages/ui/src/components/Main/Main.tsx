@@ -23,6 +23,7 @@ import { getKnownApps, getKnownTvs, getAppState } from 'utils/rtv-client';
 import styles from './Main.module.css';
 
 const tvRefetchInterval = 60 * 1000;
+const appStateRefetchInterval = 30 * 1000;
 
 function Main() {
   const { data: apps = [], isLoading: isAppsLoading } = useQuery(queries.mainKnownApps, getKnownApps, {
@@ -52,7 +53,12 @@ function Main() {
 
   const { data: appState = null } = useQuery([queries.appState, { tvIp, appId }], () => getAppState(tvIp, appId), {
     enabled: Boolean(tvIp && appId),
+    refetchInterval: appStateRefetchInterval,
   });
+
+  if (tv) {
+    tv.online = Boolean(appState);
+  }
 
   const onAppIdChange = (newAppId: string | null) => {
     if (!newAppId) {

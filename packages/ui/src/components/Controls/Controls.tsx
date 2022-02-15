@@ -2,6 +2,7 @@ import { ChangeEvent, useRef } from 'react';
 
 import JSON5 from 'json5';
 import { useMutation, useQueryClient } from 'react-query';
+import Tooltip from 'react-tooltip';
 import Popup from 'reactjs-popup';
 import { PopupActions } from 'reactjs-popup/dist/types';
 import { AppState, KnownTv, Platform } from 'rtv-client';
@@ -15,8 +16,8 @@ import { ReactComponent as ChevronDownIcon } from 'icons/chevron-down.svg';
 import { ReactComponent as ChevronUpIcon } from 'icons/chevron-up.svg';
 import { ReactComponent as MoreIcon } from 'icons/more.svg';
 import { ReactComponent as TrashIcon } from 'icons/trash.svg';
+import { getControlState } from 'utils/controlState';
 import { queries } from 'utils/queries';
-import { remoteKeysByPlatform } from 'utils/remoteKeys';
 import { appClose, appDebug, appLaunch, enableDevMode, free, wakeUp, appInstall, appUninstall } from 'utils/rtv-client';
 
 import styles from './Controls.module.css';
@@ -115,20 +116,21 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
   };
 
   const { username } = useAuth();
-  const occupied = tv?.occupied && tv?.occupied !== username;
-  const tvOnline = tv?.online;
-  const enableRemoteControl = tvOnline && tv?.platform && remoteKeysByPlatform[tv?.platform] !== undefined && !occupied;
-  const enableApplicationControl = Boolean(tvOnline && appId && appState && !occupied);
-  const enableWakeUpButton = tv?.mac && !['orsay', 'playstation'].includes(tv.platform);
-  const enableDevModeButton = tvOnline && tv?.platform === 'webos' && !occupied;
+  const { devModeControl, applicationControl, wakeUpControl, remoteControl } = getControlState({ username, appId, tv });
 
   const popupRef = useRef<PopupActions>();
 
   return (
     <div className={styles.buttons}>
+      <Tooltip id={styles.tooltip} effect="solid" arrowColor="transparent" />
       <div className={styles.buttonsGroup}>
         {appState?.installed === false ? (
-          <Button className={styles.installButton} disabled={!enableApplicationControl}>
+          <Button
+            className={styles.installButton}
+            disabled={applicationControl.disabled}
+            tooltipId={styles.tooltip}
+            tooltipText={applicationControl.disableReason}
+          >
             <input type="file" accept=".ipk,.wgt,.zip" onChange={onAppInstall} />
             Install
           </Button>
@@ -136,17 +138,21 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
           <>
             <Button
               className={styles.button}
-              disabled={!enableApplicationControl}
+              disabled={applicationControl.disabled}
               variant="secondary"
               onClick={onAppClose}
+              tooltipId={styles.tooltip}
+              tooltipText={applicationControl.disableReason}
             >
               Close
             </Button>
             <Button
               className={styles.button}
-              disabled={!enableApplicationControl}
+              disabled={applicationControl.disabled}
               variant="secondary"
               onClick={onAppLaunch}
+              tooltipId={styles.tooltip}
+              tooltipText={applicationControl.disableReason}
             >
               {appState?.running ? 'Relaunch' : 'Launch'}
             </Button>
@@ -154,8 +160,14 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
               ref={popupRef as React.Ref<PopupActions>}
               className="morePopup"
               trigger={
-                <Button className={styles.moreButton} variant="secondary" disabled={!enableApplicationControl}>
-                  <MoreIcon className={enableApplicationControl ? styles.moreIcon : styles.moreIconDisabled} />
+                <Button
+                  className={styles.moreButton}
+                  variant="secondary"
+                  disabled={applicationControl.disabled}
+                  tooltipId={styles.tooltip}
+                  tooltipText={applicationControl.disableReason}
+                >
+                  <MoreIcon className={applicationControl.disabled ? styles.moreIconDisabled : styles.moreIcon} />
                 </Button>
               }
               closeOnDocumentClick={true}
@@ -167,14 +179,27 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
                 <span className={styles.uninstallText}>Uninstall</span>
               </Button>
             </Popup>
-            <Button className={styles.debugButton} disabled={!enableApplicationControl} onClick={onAppDebug}>
+            <Button
+              className={styles.debugButton}
+              disabled={applicationControl.disabled}
+              onClick={onAppDebug}
+              tooltipId={styles.tooltip}
+              tooltipText={applicationControl.disableReason}
+            >
               Debug
             </Button>
           </>
         )}
       </div>
       <div className={styles.buttonsGroup}>
-        <Button className={styles.button} variant="secondary" onClick={onWakeUp} disabled={!enableWakeUpButton}>
+        <Button
+          className={styles.button}
+          variant="secondary"
+          onClick={onWakeUp}
+          disabled={wakeUpControl.disabled}
+          tooltipId={styles.tooltip}
+          tooltipText={wakeUpControl.disableReason}
+        >
           Wake Up
         </Button>
         <ConfirmationModal
@@ -191,7 +216,13 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
         />
         <RemoteControlModal
           trigger={
-            <Button className={styles.largeButton} variant="secondary" disabled={!enableRemoteControl}>
+            <Button
+              className={styles.largeButton}
+              variant="secondary"
+              disabled={remoteControl.disabled}
+              tooltipId={styles.tooltip}
+              tooltipText={remoteControl.disableReason}
+            >
               Remote mode
             </Button>
           }
@@ -201,7 +232,9 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
           className={styles.largeButton}
           variant="secondary"
           onClick={onEnableDevMode}
-          disabled={!enableDevModeButton}
+          disabled={devModeControl.disabled}
+          tooltipId={styles.tooltip}
+          tooltipText={devModeControl.disableReason}
         >
           Dev mode on
         </Button>

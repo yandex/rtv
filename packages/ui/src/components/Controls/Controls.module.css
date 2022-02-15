@@ -98,3 +98,12 @@
   composes: button;
   width: 132px;
 }
+
+#tooltip {
+  color: var(--monochrome-charcoal);
+  background: var(--monochrome-white);
+  padding: 16px;
+  border-radius: var(--border-radius-large);
+  box-shadow: var(--box-shadow-large);
+  opacity: 1;
+}
