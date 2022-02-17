@@ -116,7 +116,11 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
   };
 
   const { username } = useAuth();
-  const { devModeControl, applicationControl, wakeUpControl, remoteControl } = getControlState({ username, appId, tv });
+  const { tvControl, devModeControl, applicationControl, wakeUpControl, remoteControl } = getControlState({
+    username,
+    appId,
+    tv,
+  });
 
   const popupRef = useRef<PopupActions>();
 
@@ -206,7 +210,13 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
           title="Confirm"
           text={`Are you sure you want to free TV "${tv?.alias}"?`}
           trigger={
-            <Button className={styles.button} variant="secondary" disabled={!tv}>
+            <Button
+              className={styles.button}
+              variant="secondary"
+              disabled={tvControl.disabled}
+              tooltipId={styles.tooltip}
+              tooltipText={tvControl.disableReason}
+            >
               Free
             </Button>
           }
@@ -240,9 +250,11 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
         </Button>
         <Button
           className={tv ? styles.tvInfoButtonEnabled : styles.tvInfoButtonDisabled}
-          disabled={!tv}
+          disabled={tvControl.disabled}
           variant="ghost"
           onClick={onTvInfo}
+          tooltipId={styles.tooltip}
+          tooltipText={tvControl.disableReason}
         >
           TV info
           {isTVInfoOpen ? (

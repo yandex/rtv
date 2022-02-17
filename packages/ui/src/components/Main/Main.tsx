@@ -56,7 +56,7 @@ function Main() {
     refetchInterval: appStateRefetchInterval,
   });
 
-  if (tv) {
+  if (tv && appId) {
     tv.online = Boolean(appState);
   }
 

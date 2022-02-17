@@ -42,3 +42,7 @@
   color: var(--monochrome-silver);
   font-size: var(--font-size-small);
 }
+
+.button {
+  width: 100%;
+}
