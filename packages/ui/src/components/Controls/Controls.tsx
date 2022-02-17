@@ -135,8 +135,10 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
             tooltipId={styles.tooltip}
             tooltipText={applicationControl.disableReason}
           >
-            <input type="file" accept=".ipk,.wgt,.zip" onChange={onAppInstall} />
-            Install
+            <input id={styles.installButtonInput} type="file" accept=".ipk,.wgt,.zip" onChange={onAppInstall} />
+            <label htmlFor={styles.installButtonInput} className={styles.installButtonLabel}>
+              Install
+            </label>
           </Button>
         ) : (
           <>
