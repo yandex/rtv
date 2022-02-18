@@ -1,0 +1,11 @@
+.screencast-navigation{border-bottom-color:rgb(92, 92, 92);}
+.screencast-navigation button:hover{border-top-color:rgb(61, 61, 61);border-right-color:rgb(61, 61, 61);border-bottom-color:rgb(61, 61, 61);border-left-color:rgb(61, 61, 61);}
+.screencast-navigation button:active{border-top-color:rgb(85, 85, 85);border-right-color:rgb(85, 85, 85);border-bottom-color:rgb(85, 85, 85);border-left-color:rgb(85, 85, 85);}
+.screencast-navigation .progress{background-color:rgb(20, 83, 189);}
+.screencast-viewport{border-top-color:rgb(102, 102, 102);border-right-color:rgb(102, 102, 102);border-bottom-color:rgb(102, 102, 102);border-left-color:rgb(102, 102, 102);background-color:rgb(44, 44, 44);}
+.screencast-canvas-container{border-top-color:rgb(102, 102, 102);border-right-color:rgb(102, 102, 102);border-bottom-color:rgb(102, 102, 102);border-left-color:rgb(102, 102, 102);}
+.screencast-px{color:rgb(127, 127, 127);}
+.screencast-tag-name{color:rgb(237, 119, 229);}
+.screencast-node-id{color:rgb(89, 89, 229);}
+.screencast-class-name{color:rgb(255, 171, 102);}
+.screencast-glasspane{background-color:rgba(36, 36, 36, 0.8);}

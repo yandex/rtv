@@ -1,0 +1,27 @@
+input[type="radio"]:focus{outline-color:-webkit-focus-ring-color;}
+.view-container > .toolbar{border-bottom-color:rgb(44, 44, 44);}
+.highlighted-search-result{background-color:rgba(255, 255, 0, 0.8);outline-color:rgba(255, 255, 0, 0.8);}
+.link{color:rgb(51, 119, 238);}
+input{background-color:rgb(36, 36, 36);}
+input::placeholder{color:rgba(230, 230, 230, 0.54);}
+.harmony-input:not([type]):not(.error-input):not(:invalid):hover, .harmony-input[type="number"]:not(.error-input):not(:invalid):hover, .harmony-input[type="text"]:not(.error-input):not(:invalid):hover{box-shadow:var(--focus-ring-inactive-shadow);}
+.harmony-input:not([type]):not(.error-input):not(:invalid):focus, .harmony-input[type="number"]:not(.error-input):not(:invalid):focus, .harmony-input[type="text"]:not(.error-input):not(:invalid):focus{box-shadow:var(--focus-ring-active-shadow);}
+.highlighted-search-result.current-search-result{background-color:rgba(255, 127, 0, 0.8);}
+.editing{box-shadow:var(--drop-shadow);background-color:rgb(36, 36, 36);}
+.editing, .editing *{color:rgb(213, 213, 213) !important;}
+.harmony-input:not([type]).error-input, .harmony-input[type="number"].error-input, .harmony-input[type="text"].error-input, .harmony-input:not([type]):invalid, .harmony-input[type="number"]:invalid, .harmony-input[type="text"]:invalid{box-shadow:rgb(255, 26, 0) 0px 0px 0px 1px;}
+.chrome-select{border-top-color:rgba(230, 230, 230, 0.2);border-right-color:rgba(230, 230, 230, 0.2);border-bottom-color:rgba(230, 230, 230, 0.2);border-left-color:rgba(230, 230, 230, 0.2);color:rgb(204, 204, 204);background-color:rgb(38, 38, 38);}
+.chrome-select:enabled:active, .chrome-select:enabled:focus, .chrome-select:enabled:hover{background-color:rgb(41, 41, 41);box-shadow:rgba(230, 230, 230, 0.1) 0px 1px 2px;}
+.chrome-select:enabled:active{background-color:rgb(42, 42, 42);}
+.chrome-select:enabled:focus{box-shadow:rgba(230, 230, 230, 0.1) 0px 1px 2px, rgba(11, 78, 189, 0.4) 0px 0px 0px 2px;}
+.chrome-select-label p{color:rgb(127, 127, 127);}
+.chrome-select optgroup, .chrome-select option{background-color:rgb(44, 44, 44);color:rgb(213, 213, 213);}
+.gray-info-message{color:rgb(119, 119, 119);}
+.full-widget-dimmed-banner{color:rgb(136, 136, 136);background-color:rgb(36, 36, 36);}
+[is="ui-icon"].icon-mask{background-color:rgb(145, 145, 145);}
+.expandable-inline-button{background-color:rgb(52, 52, 52);color:rgb(204, 204, 204);}
+.undisplayable-text{color:rgb(127, 127, 127);}
+.expandable-inline-button:hover{background-color:rgb(57, 57, 57);}
+.expandable-inline-button[data-keyboard-focus="true"]{background-color:rgb(70, 70, 70);}
+::selection{background-color:rgb(6, 58, 101);}
+button.link[data-keyboard-focus="true"]:focus{background-color:rgba(255, 255, 255, 0.08);}
