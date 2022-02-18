@@ -113,7 +113,7 @@ export default class TizenAppDebugger {
 
   _createResponse(versionInfo: VersionInfo, debugPageInfo: DebugPageInfo) {
     const wsUrl = `${this._tv.ip}:${this._debugPort}/devtools/page/${debugPageInfo.id}`;
-    const inspectorUrl = `http://${this._tv.ip}:${this._debugPort}/inspector.html`;
+    const inspectorUrl = `http://${this._tv.ip}:${this._debugPort}/devtools/inspector.html`;
     const debugUrl = `${inspectorUrl}?ws=${wsUrl}`;
     const { major, minor } = versionInfo;
 

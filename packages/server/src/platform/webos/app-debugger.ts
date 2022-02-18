@@ -92,7 +92,7 @@ export default class WebOSAppDebugger {
 
   async _createResponse(version: VersionInfo | undefined, debugPageInfo: DebugPageInfo, debugPort: number) {
     const wsUrl = `localhost:${debugPort}/devtools/page/${debugPageInfo.id}`;
-    const inspectorUrl = `http://localhost:${debugPort}/inspector.html`;
+    const inspectorUrl = `http://localhost:${debugPort}/devtools/inspector.html`;
     const debugUrl = `${inspectorUrl}?ws=${wsUrl}`;
     return {
       wsUrl,

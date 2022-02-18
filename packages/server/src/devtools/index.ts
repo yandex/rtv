@@ -20,4 +20,8 @@ router.use('/webos3', express.static(path.join(__dirname, '../../public/devtools
 // from https://github.com/stamoern/webos-devtools/tree/webos-4
 router.use('/webos4', express.static(path.join(__dirname, '../../public/devtools/front_end_54.0.2792.0')));
 
+router.use('/tizen6', express.static(path.join(__dirname, '../../public/devtools/frontend_tizen_6')));
+
+router.use('/webos6', express.static(path.join(__dirname, '../../public/devtools/frontend_webos_6')));
+
 export default router;
