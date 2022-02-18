@@ -45,6 +45,9 @@ export const getControlState = (props: ControlStateInfo) => {
     if (!tv) {
       return TV_NOT_SELECTED;
     }
+    if (occupied()) {
+      return TV_OCCUPIED;
+    }
     if (!tv.mac) {
       return MAC_NOT_SPECIFIED;
     }
@@ -62,6 +65,9 @@ export const getControlState = (props: ControlStateInfo) => {
     if (tv.online === false) {
       return TV_OFFLINE;
     }
+    if (occupied()) {
+      return TV_OCCUPIED;
+    }
     if (tv.platform !== 'webos') {
       return NOT_SUPPORTED_BY_PLATFORM;
     }
@@ -76,8 +82,19 @@ export const getControlState = (props: ControlStateInfo) => {
     if (tv.online === false) {
       return TV_OFFLINE;
     }
+    if (occupied()) {
+      return TV_OCCUPIED;
+    }
     if (!appId) {
       return APP_NOT_SELECTED;
+    }
+
+    return null;
+  }
+
+  function tvControlDisabled(): DisableReason {
+    if (!tv) {
+      return TV_NOT_SELECTED;
     }
 
     return null;
@@ -91,6 +108,7 @@ export const getControlState = (props: ControlStateInfo) => {
   }
 
   return {
+    tvControl: getState(tvControlDisabled()),
     applicationControl: getState(applicationControlDisabled()),
     devModeControl: getState(devModeDisabled()),
     wakeUpControl: getState(wakeUpDisabled()),

@@ -1,20 +1,25 @@
 .button {
   padding: 11px 12px;
   min-width: 116px;
+  height: 40px;
 }
 
 .closeButton {
   position: absolute;
   border-radius: 50%;
   top: 32px;
-  right: 26px;
-  padding: 6px;
+  right: 32px;
+  padding: 0px;
 }
 
 .buttons {
   display: flex;
   justify-content: flex-end;
   gap: 16px;
+}
+
+.title {
+  line-height: 23px;
 }
 
 .text {

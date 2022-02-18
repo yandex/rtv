@@ -51,12 +51,12 @@ function Main() {
   const tv = tvs.find((x: KnownTv) => x.ip === tvIp);
   const app = apps.find((x: KnownApp) => x.alias === appId);
 
-  const { data: appState = null } = useQuery([queries.appState, { tvIp, appId }], () => getAppState(tvIp, appId), {
+  const { data: appState = null, isLoading: isAppStateLoading } = useQuery([queries.appState, { tvIp, appId }], () => getAppState(tvIp, appId), {
     enabled: Boolean(tvIp && appId),
     refetchInterval: appStateRefetchInterval,
   });
 
-  if (tv) {
+  if (tv && appId && !isAppStateLoading) {
     tv.online = Boolean(appState);
   }
 

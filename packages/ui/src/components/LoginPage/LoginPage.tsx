@@ -39,7 +39,7 @@ export default function LoginPage() {
           placeholder="Login"
           onChange={(e) => setLogin(e.target.value)}
         />
-        <Button disabled={!login} type="submit">
+        <Button className={styles.button} disabled={!login} type="submit">
           Sign in
         </Button>
         <span className={styles.version}>{appVersion}</span>
