@@ -1,3 +1,4 @@
+import { escape } from 'querystring';
 import fetch from 'node-fetch';
 import Loggee from 'loggee';
 import { throwIf } from '../../helpers';
@@ -66,7 +67,7 @@ export default class OrsayApp {
   }
 
   _getLaunchBody(params?: Record<string, unknown>) {
-    return params ? { id: JSON.stringify(params) } : null;
+    return params ? { id: escape(JSON.stringify(params)) } : null;
   }
 
   /**
