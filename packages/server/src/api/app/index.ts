@@ -154,44 +154,50 @@ function setInspectorUrl(debugInfo: DebugInfo, serverOrigin: string) {
 }
 
 function getHostedDevtoolsUrl(debugInfo: DebugInfo) {
-  const { platform, osMajor } = debugInfo;
+  const { platform } = debugInfo;
 
   if (platform === 'webos') {
-    if (osMajor == 6) {
-      // return TV hosted Devtools for WebOS 6 (2021)
-      return null;
-    }
-
-    return `devtools/webos${osMajor && osMajor <= 3 ? '3' : '6'}`;
+    return getHostedWebosDevtoolsUrl(debugInfo);
   }
 
   if (platform === 'tizen') {
-    getHostedTizenDevtoolsUrl({ osMajor });
+    return getHostedTizenDevtoolsUrl(debugInfo);
   }
 
   //playstation and others
   return `devtools`;
 }
 
-function getHostedTizenDevtoolsUrl({ osMajor }: { osMajor: number | undefined }) {
-  if (osMajor == 6) {
-    // return TV hosted Devtools for Tizen 6 (2021)
-    return null;
+function getHostedTizenDevtoolsUrl({ osMajor }: DebugInfo) {
+  switch (osMajor) {
+    case 2:
+      return 'devtools/webkit';
+    case 3:
+      return 'devtools';
+    case 4:
+      return 'devtools/tizen4';
+    case 5:
+      return 'devtools/tizen5';
+    default:
+      // use TV-hosted devtools in other cases
+      return null;
   }
+}
 
-  if (osMajor === 2) {
-    return 'devtools/webkit';
+function getHostedWebosDevtoolsUrl({ osMajor }: DebugInfo) {
+  switch (osMajor) {
+    case 1:
+    case 2:
+    case 3:
+      return 'devtools/webos3';
+    case 4:
+      return 'devtools/webos4';
+    case 5:
+      return 'devtools/webos5';
+    default:
+      // use TV-hosted devtools in other cases
+      return null;
   }
-
-  if (osMajor === 3) {
-    return 'devtools';
-  }
-
-  if (osMajor === 4) {
-    return 'devtools/tizen4';
-  }
-
-  return 'devtools/tizen6';
 }
 
 /**
