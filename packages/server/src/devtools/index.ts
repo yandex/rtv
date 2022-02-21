@@ -19,9 +19,9 @@ router.use('/webos3', express.static(path.join(__dirname, '../../public/devtools
 // Chrome devtools for webOS 4.* based on Chromium 54.0.2792.0
 // from https://github.com/stamoern/webos-devtools/tree/webos-4
 router.use('/webos4', express.static(path.join(__dirname, '../../public/devtools/front_end_54.0.2792.0')));
-// use Tizen 6 devtools for webos 5
+// use Tizen 6 devtools for Tizen 5, 5.5
 router.use('/tizen5', express.static(path.join(__dirname, '../../public/devtools/frontend_tizen_6')));
-// Use WebOS 6 devtools for webos 5
+// Use WebOS 6 devtools for WebOS 5
 router.use('/webos5', express.static(path.join(__dirname, '../../public/devtools/frontend_webos_6')));
 
 export default router;
