@@ -1,6 +1,6 @@
 {
   "name": "rtv-client",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "types": "./dist/index.d.ts",
   "description": "Remote TV control JS-client for developers",
   "scripts": {
@@ -28,7 +28,7 @@
     "ws": "^8.3.0"
   },
   "devDependencies": {
-    "rtv-server": "^2.1.0"
+    "rtv-server": "^2.2.0"
   },
   "license": "MIT"
 }
