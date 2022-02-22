@@ -1,0 +1,6 @@
+.release-note-top-section{background-color:var(--toolbar-bg-color);}
+.release-note-container li:hover{color:rgb(26, 178, 252);}
+.release-note-container li:not(:hover) .release-note-subtitle{color:rgb(102, 102, 102);}
+.release-note-action-container > button{color:rgb(138, 138, 138);}
+img{box-shadow:rgba(230, 230, 230, 0.3) 0px 2px 4px;}
+img:hover{box-shadow:rgba(230, 230, 230, 0.5) 0px 2px 4px;}

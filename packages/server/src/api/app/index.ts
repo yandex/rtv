@@ -116,7 +116,7 @@ interface DebugInfo {
 }
 
 function getDevtoolsProtocolDebugInfo(debugInfo: DebugInfo, serverOrigin: string, rtvUser: string) {
-  setHostedInspectorUrl(debugInfo, serverOrigin);
+  setInspectorUrl(debugInfo, serverOrigin);
   setProxiedWsUrl(debugInfo, serverOrigin, rtvUser);
   const wsProtocol = new URL(serverOrigin).protocol == 'https:' ? 'wss' : 'ws';
   setDebugUrl(debugInfo, wsProtocol);
@@ -142,32 +142,62 @@ function getWeinreDebugInfo() {
 // See: https://github.com/danmactough/node-webkit-agent-frontend/pull/6
 // In Tizen 3.0 it is also better use self-hosted inspector. See devtools/README.md.
 // For webOS we also have to use our own devtools, different for webOS <= 3 and webOS 4
-function setHostedInspectorUrl(debugInfo: DebugInfo, serverOrigin: string) {
-  const hostedInspectorPath = `${getDevtoolsUrl(debugInfo)}/inspector.html`;
-  debugInfo.inspectorUrl = `${serverOrigin}/${hostedInspectorPath}`;
+function setInspectorUrl(debugInfo: DebugInfo, serverOrigin: string) {
+  const hostedUrl = getHostedDevtoolsUrl(debugInfo);
+  if (hostedUrl || !debugInfo.inspectorUrl) {
+    const hostedInspectorPath = hostedUrl ? `${hostedUrl}/inspector.html` : debugInfo;
+    debugInfo.inspectorUrl = `${serverOrigin}/${hostedInspectorPath}`;
+  } else {
+    const proxiedInspectorPath = proxyUrlAsPath(debugInfo.inspectorUrl);
+    debugInfo.inspectorUrl = `${serverOrigin}${proxiedInspectorPath}`;
+  }
 }
 
-function getDevtoolsUrl(debugInfo: DebugInfo) {
-  const { platform, osMajor } = debugInfo;
+function getHostedDevtoolsUrl(debugInfo: DebugInfo) {
+  const { platform } = debugInfo;
 
   if (platform === 'webos') {
-    return `devtools/webos${osMajor && osMajor <= 3 ? '3' : '4'}`;
+    return getHostedWebosDevtoolsUrl(debugInfo);
   }
 
   if (platform === 'tizen') {
-    if (osMajor === 2) {
-      return 'devtools/webkit';
-    }
-
-    if (osMajor === 3) {
-      return 'devtools';
-    }
-
-    return 'devtools/tizen4';
+    return getHostedTizenDevtoolsUrl(debugInfo);
   }
 
   //playstation and others
   return `devtools`;
+}
+
+function getHostedTizenDevtoolsUrl({ osMajor }: DebugInfo) {
+  switch (osMajor) {
+    case 2:
+      return 'devtools/webkit';
+    case 3:
+      return 'devtools';
+    case 4:
+      return 'devtools/tizen4';
+    case 5:
+      return 'devtools/tizen5';
+    default:
+      // use TV-hosted devtools in other cases
+      return null;
+  }
+}
+
+function getHostedWebosDevtoolsUrl({ osMajor }: DebugInfo) {
+  switch (osMajor) {
+    case 1:
+    case 2:
+    case 3:
+      return 'devtools/webos3';
+    case 4:
+      return 'devtools/webos4';
+    case 5:
+      return 'devtools/webos5';
+    default:
+      // use TV-hosted devtools in other cases
+      return null;
+  }
 }
 
 /**

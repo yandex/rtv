@@ -1,0 +1,12 @@
+.tabbed-pane-content.has-no-tabs{background-color:rgb(58, 58, 58);}
+.tabbed-pane-placeholder{text-shadow:rgba(0, 0, 0, 0.75) 0px 1px 0px;}
+.tabbed-pane-header{border-bottom-color:rgb(61, 61, 61);background-color:var(--toolbar-bg-color);}
+.tabbed-pane-header-tab{color:rgb(165, 165, 165);}
+.tabbed-pane-header-tab:hover, .tabbed-pane-shadow .tabbed-pane-header-tab[data-keyboard-focus="true"]:focus{color:rgb(204, 204, 204);background-color:var(--toolbar-hover-bg-color);}
+.tabbed-pane-header-tab.selected{background-color:var(--tab-selected-bg-color);color:var(--tab-selected-fg-color);}
+.tabbed-pane-header-tab.dragging{box-shadow:rgba(230, 230, 230, 0.37) 0px 1px 4px 0px;background-color:rgb(49, 49, 49);}
+.tabbed-pane-header-tabs-drop-down-container > .chevron-icon{background-color:rgb(204, 204, 204);}
+.tabbed-pane-header-tabs-drop-down-container:hover, .tabbed-pane-header-tabs-drop-down-container[data-keyboard-focus="true"]:focus{background-color:rgba(255, 255, 255, 0.08);}
+.tabbed-pane-shadow.vertical-tab-layout .tabbed-pane-header-tab{color:rgb(136, 136, 136);}
+.tabbed-pane-shadow.vertical-tab-layout .tabbed-pane-header-tab.selected{border-left-color:rgb(153, 153, 153);}
+.tabbed-pane-tab-slider{background-color:var(--accent-color);}

@@ -1,0 +1,2 @@
+.tooltip{background-color:rgb(42, 42, 42);color:rgb(204, 204, 204);border-top-color:rgba(230, 230, 230, 0.1);border-right-color:rgba(230, 230, 230, 0.1);border-bottom-color:rgba(230, 230, 230, 0.1);border-left-color:rgba(230, 230, 230, 0.1);}
+.tooltip-shortcut{color:rgb(140, 140, 140);}
