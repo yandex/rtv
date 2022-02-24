@@ -50,6 +50,11 @@ export default class App extends ApiBase {
    */
   async packApp(file: any, out: string, params: PackAppAdditionalParams = {}): Promise<any> {
     const platform = detectPlaftormByFileExt(out);
+    if (platform === 'orsay' && file.path && /.*\.zip$/.test(file.path)) {
+      // Nothing to do for orsay, return zip archive
+      return file;
+    }
+
     const formData = createFormData({
       platform,
       ...params,
