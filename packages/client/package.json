@@ -1,6 +1,6 @@
 {
   "name": "rtv-client",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "types": "./dist/index.d.ts",
   "description": "Remote TV control JS-client for developers",
   "scripts": {
