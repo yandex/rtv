@@ -226,7 +226,8 @@ const isZipFile = (fileName: string) => path.extname(fileName) === '.zip';
 async function packZippedFile(zipPath: string, options?: PackAppOptions) {
   const unzippedPath = await uploader.extractZipToTempDir(zipPath);
   logger.log(`Extracted to: ${unzippedPath}`);
-  const packPath = path.join(config.workDirPath, 'builds');
+  // Pack to uid directory (like builds/02643e89a1604b7694adfa2a990fa7b4) to avoid filename conflicts
+  const packPath = path.join(config.workDirPath, 'builds', path.basename(zipPath, '.zip'));
   fs.ensureDir(packPath);
   return platform.packApp(unzippedPath, packPath, options);
 }
