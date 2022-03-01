@@ -44,7 +44,7 @@ On MacOS:
 Note: NETWORK_MODE=host allows to scan and wake on LAN TVs, but doesn't work on MacOS.
 
 Note: `WEBOS_ACCOUNT_LOGIN` and `WEBOS_ACCOUNT_PASSWORD` are required only for WebOS TVs.
-They should be created [here](https://us.lgaccount.com/) and are used for login in WebOS Developer Mode application.
+Login and password pair can be obtained [here](https://webostv.developer.lge.com/develop/app-test/preparing-account/) and are used for login in WebOS Developer Mode application.
 
 ### Setup without Docker
 
