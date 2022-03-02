@@ -1,7 +1,11 @@
 {
   "name": "rtv-ui",
   "version": "2.2.2",
-  "description": "RTV UI",
+  "description": "Remote TV control UI",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yandex/rtv.git"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
