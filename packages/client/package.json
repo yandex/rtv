@@ -3,6 +3,10 @@
   "version": "2.2.2",
   "types": "./dist/index.d.ts",
   "description": "Remote TV control JS-client for developers",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yandex/rtv.git"
+  },
   "scripts": {
     "clean:dist": "rm -rf dist",
     "test": "",

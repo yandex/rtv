@@ -2,6 +2,10 @@
   "name": "rtv-server",
   "version": "2.2.2",
   "description": "Remote TV control server for developers",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yandex/rtv.git"
+  },
   "scripts": {
     "clean:dist": "rm -rf dist",
     "test:unit": "mocha test/unit",
