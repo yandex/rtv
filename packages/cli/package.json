@@ -1,6 +1,6 @@
 {
   "name": "rtv-cli",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Remote TV control CLI for developers",
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     "console.table": "^0.10.0",
     "open": "^7.0.4",
     "read-pkg-up": "^6.0.0",
-    "rtv-client": "^2.2.2"
+    "rtv-client": "^2.2.3"
   },
   "devDependencies": {
     "fs-extra": "^7.0.0",
