@@ -32,24 +32,24 @@ describe('app-install', () => {
       stubCmd('sdb -s 1.2.3.5 capability', getMock('tizen24/sdb_capability.txt'));
       // tizen install outputs to stderr, not stdout
       stubCmd(
-        `tizen install -s 1.2.3.5:26101 -n TESTABCDEF.App_mock_uid.wgt -- ${os.tmpdir()}/rtv-temp/builds`,
+        `tizen install -s 1.2.3.5:26101 -n TESTABCDEF.App_mock_uid.wgt -- ${os.tmpdir()}/rtv-temp/builds/mock_uid`,
         getMock('tizen24/sdb_install_ok.txt'),
         { error: true }
       );
       stubCmd('tizen security-profiles list', getMock('tizen24/security_profiles_list.txt'));
       stubCmd(
-        `tizen package -t wgt -s Profile -- ${os.tmpdir()}/rtv-temp/mock_uid -o ${os.tmpdir()}/rtv-temp/builds`,
+        `tizen package -t wgt -s Profile -- ${os.tmpdir()}/rtv-temp/mock_uid -o ${os.tmpdir()}/rtv-temp/builds/mock_uid`,
         getMock('tizen24/package_-t_wgt.txt')
       );
       stubCmd(
-        `mv '${os.tmpdir()}/rtv-temp/builds/App (test).wgt' '${os.tmpdir()}/rtv-temp/builds/TESTABCDEF.App_mock_uid.wgt'`,
+        `mv '${os.tmpdir()}/rtv-temp/builds/mock_uid/App (test).wgt' '${os.tmpdir()}/rtv-temp/builds/mock_uid/TESTABCDEF.App_mock_uid.wgt'`,
         ''
       );
       stubCmd(
         `rm -f ${os.tmpdir()}/rtv-temp/mock_uid/.manifest.tmp ${os.tmpdir()}/rtv-temp/mock_uid/author-signature.xml ${os.tmpdir()}/rtv-temp/mock_uid/signature1.xml`,
         ''
       );
-      stubCmd(`rm -f ${os.tmpdir()}/rtv-temp/builds/*.wgt`, '');
+      stubCmd(`rm -f ${os.tmpdir()}/rtv-temp/builds/mock_uid/*.wgt`, '');
       const formData = new FormData();
       formData.append('ip', '1.2.3.5');
       formData.append('file', fs.createReadStream('test/mocks/App.zip'), { filename: 'App.zip' });

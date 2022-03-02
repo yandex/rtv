@@ -11,12 +11,12 @@ describe('app-pack', () => {
   const rtvTemp = `${os.tmpdir()}/rtv-temp`;
   const inputFile = path.resolve(__dirname, '../mocks/App.zip');
   const outputFile = path.resolve(__dirname, '../../../../.temp/App.wgt');
-  const wgtMockFilePath = `${rtvTemp}/builds/TESTABCDEF.App_mock_uid.wgt`;
+  const wgtMockFilePath = `${rtvTemp}/builds/mock_uid/TESTABCDEF.App_mock_uid.wgt`;
 
   it('success pack wgt with default security profile', async () => {
     setupRtvServerStubsForPacking();
     stubCmd(
-      `tizen package -t wgt -s Profile -- ${rtvTemp}/mock_uid -o ${rtvTemp}/builds`,
+      `tizen package -t wgt -s Profile -- ${rtvTemp}/mock_uid -o ${rtvTemp}/builds/mock_uid`,
       getMock('tizen24/package_-t_wgt.txt')
     );
 
@@ -37,7 +37,7 @@ describe('app-pack', () => {
   it('security profile does not have author certificate', async () => {
     setupRtvServerStubsForPacking();
     stubCmd(
-      `tizen package -t wgt -s Profile -- ${rtvTemp}/mock_uid -o ${rtvTemp}/builds`,
+      `tizen package -t wgt -s Profile -- ${rtvTemp}/mock_uid -o ${rtvTemp}/builds/mock_uid`,
       getMock('tizen24/package_-t_wgt_no_author_certificate.txt')
     );
 
@@ -52,7 +52,7 @@ describe('app-pack', () => {
   it('custom security profile success pack', async () => {
     setupRtvServerStubsForPacking();
     stubCmd(
-      `tizen package -t wgt -s Profile2 -- ${rtvTemp}/mock_uid -o ${rtvTemp}/builds`,
+      `tizen package -t wgt -s Profile2 -- ${rtvTemp}/mock_uid -o ${rtvTemp}/builds/mock_uid`,
       getMock('tizen24/package_-t_wgt.txt')
     );
 
@@ -74,12 +74,12 @@ describe('app-pack', () => {
 
   function setupRtvServerStubsForPacking() {
     stubCmd('tizen security-profiles list', getMock('tizen24/security_profiles_list.txt'));
-    stubCmd(`mv '${rtvTemp}/builds/App (test).wgt' '${wgtMockFilePath}'`, '');
+    stubCmd(`mv '${rtvTemp}/builds/mock_uid/App (test).wgt' '${wgtMockFilePath}'`, '');
     stubCmd(
       `rm -f ${rtvTemp}/mock_uid/.manifest.tmp ${rtvTemp}/mock_uid/author-signature.xml ${rtvTemp}/mock_uid/signature1.xml`,
       ''
     );
-    stubCmd(`rm -f ${rtvTemp}/builds/*.wgt`, '');
+    stubCmd(`rm -f ${rtvTemp}/builds/mock_uid/*.wgt`, '');
     fs.writeFileSync(wgtMockFilePath, 'Test wgt file');
   }
 });
