@@ -1,4 +1,4 @@
-FROM vitalets/tizen-webos-sdk
+FROM vitalets/tizen-webos-sdk:2.0
 
 WORKDIR /app
 
@@ -7,21 +7,10 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y \
-      nodejs \
-      logrotate
+      nodejs
 
-# prevent /tmp/sdb.log grow, TODO: move to vitalets/tizen-webos-sdk
-RUN mkdir -p /dev/bus/usb
-RUN echo "/tmp/sdb.log { \
-  su root root \
-  rotate 7 \
-  daily \
-  size 50M \
-  compress \
-  delaycompress \
-  missingok \
-  notifempty \
-}" >> /etc/logrotate.d/sdb
+# prevent /tmp/sdb.log grow
+RUN ln -fs /dev/null /tmp/sdb.log
 
 COPY package*.json ./
 RUN npm install
