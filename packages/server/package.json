@@ -1,6 +1,6 @@
 {
   "name": "rtv-server",
-  "version": "2.2.0",
+  "version": "2.2.2",
   "description": "Remote TV control server for developers",
   "scripts": {
     "clean:dist": "rm -rf dist",
