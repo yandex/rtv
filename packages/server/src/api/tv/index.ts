@@ -12,11 +12,12 @@ import { RTV_USER, getRtvUserFromExpressRequest } from '../../helpers/rtv-user';
 import { formatLastUsedInfo, freeTv as free, getTvLastUsed, whoIsUsingTv } from '../../helpers/tv-last-used';
 import * as wol from '../../platform/shared/smart-wol';
 import { getAppByAppId } from '../app/service';
+import { isOnline } from '../../helpers/network';
 import * as TvService from './service';
 import { KnownTv, RemoteControlInfo, Result, TVInfo, URLInfo } from './types';
 
 const logger = Loggee.create();
-const READY_TIMEOUT = 1000;
+const PING_TIMEOUT = 1;
 
 interface PkgInfo {
   downloadPath: string;
@@ -34,9 +35,9 @@ export const getKnownTvs = async (req: Request, res: Response<KnownTv[]>) => {
     tvs = await Promise.all(
       tvs.map(async (tv) => ({
         ...tv,
-        online: await platform.isReady(tv.ip, READY_TIMEOUT),
         lastUsed: formatLastUsedInfo(getTvLastUsed(tv.ip)),
         occupied: whoIsUsingTv(tv.ip),
+        online: await isOnline(tv.ip, PING_TIMEOUT),
       }))
     );
   }

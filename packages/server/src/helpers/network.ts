@@ -2,6 +2,7 @@
  * Network
  */
 import os from 'os';
+import { promise as ping } from 'ping';
 import { execCmd } from './cli';
 
 interface PlatformNetworkCommands {
@@ -22,7 +23,6 @@ const PLATFORM_COMMANDS: Record<string, PlatformNetworkCommands | undefined> = {
 
 /**
  * Returns public ipv4.
- * @returns {Array}
  */
 export const getMyIPv4 = function () {
   const adresses: string[] = [];
@@ -55,7 +55,6 @@ export const getConnections = function () {
 
 /**
  * Generates array of IPs using own IP with mask 255.255.255.0
- * @returns {Array}
  */
 export const getSubnetIPs = function () {
   const myIPs = getMyIPv4();
@@ -67,8 +66,19 @@ export const getSubnetIPs = function () {
 
 /**
  * Checks whether two IPs are in same subnet with mask 255.255.255.0
- * @returns {Boolean}
  */
 export const areInSameSubnet = function (ip1: string, ip2: string) {
   return ip1.split('.').slice(0, 3).join('.') === ip2.split('.').slice(0, 3).join('.');
+};
+
+/**
+ * Check device is online (via ping)
+ */
+export const isOnline = async (tvIp: string, timeout?: number) => {
+  try {
+    const res = await ping.probe(tvIp, { timeout });
+    return res.alive;
+  } catch (_e) {
+    return false;
+  }
 };

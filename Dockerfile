@@ -7,7 +7,8 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y \
-      nodejs
+      nodejs \
+      iputils-ping
 
 # prevent /tmp/sdb.log grow
 RUN ln -fs /dev/null /tmp/sdb.log

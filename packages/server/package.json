@@ -50,6 +50,7 @@
     "multer": "^1.4.4",
     "node-fetch": "^2.6.6",
     "p-retry": "^4.2.0",
+    "ping": "^0.4.1",
     "promise-controller": "^0.5.2",
     "pug": "^3.0.2",
     "raw-body": "^2.4.1",
