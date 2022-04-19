@@ -129,7 +129,7 @@ function Main() {
         <AppSelect apps={apps} app={app} isLoading={isAppsLoading} onAppIdChange={onAppIdChange} />
         <Controls
           tv={tv}
-          appId={appId}
+          app={app}
           appState={appState}
           appParams={appParams}
           isTVInfoOpen={isTVInfoOpen}

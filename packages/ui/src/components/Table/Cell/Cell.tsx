@@ -3,6 +3,7 @@ import Popup from 'reactjs-popup';
 
 import CellWrapper from '../CellWrapper/CellWrapper';
 import CodeEditorCellContent from '../CodeEditorCellContent/CodeEditorCellContent';
+import SwitchCellContent from '../SwitchCellContent/SwitchCellContent';
 import TextCellContent from '../TextCellContent/TextCellContent';
 import { ColumnInfo, OnEditRow, RowInfo } from '../types';
 import VisibilityCellContent from '../VisibilityCellContent/VisibilityCellContent';
@@ -34,6 +35,7 @@ export default function Cell<TRowData>(props: Props<TRowData>) {
         <td className={cellClassName}>
           <CellWrapper showSeparator={row.isEditing} alignment={alignment}>
             {type === 'visibility' && <VisibilityCellContent {...props} />}
+            {type === 'boolean' && <SwitchCellContent {...props} />}
             {type === 'text' && <TextCellContent {...props} />}
             {(type === 'code' || type === 'json5') && (
               <CodeEditorCellContent

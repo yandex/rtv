@@ -5,7 +5,7 @@ import { useMutation, useQueryClient } from 'react-query';
 import Tooltip from 'react-tooltip';
 import Popup from 'reactjs-popup';
 import { PopupActions } from 'reactjs-popup/dist/types';
-import { AppState, KnownTv, Platform } from 'rtv-client';
+import { AppState, KnownTv, Platform, KnownApp } from 'rtv-client';
 
 import Button from 'components/Button/Button';
 import ConfirmationModal from 'components/ConfirmationModal/ConfirmationModal';
@@ -24,7 +24,7 @@ import styles from './Controls.module.css';
 
 interface Props {
   tv?: KnownTv;
-  appId?: string;
+  app?: KnownApp;
   appParams?: string;
   appState: Partial<AppState> | null;
   isTVInfoOpen: boolean;
@@ -50,7 +50,7 @@ const parseParams = (params?: string, platform?: Platform) => {
   return parsedParams;
 };
 
-const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleTVInfo, appState }) => {
+const Controls: React.FC<Props> = ({ tv, app, appParams, isTVInfoOpen, toggleTVInfo, appState }) => {
   const queryClient = useQueryClient();
 
   const wakeUpMutation = useMutation((tvIp: string) => wakeUp(tvIp), {
@@ -75,13 +75,13 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
   });
 
   const onAppLaunch = () => {
-    if (tv && appId) appLaunch(tv.ip, appId, parseParams(appParams, tv.platform));
+    if (tv && app?.id) appLaunch(tv.ip, app.id, parseParams(appParams, tv.platform));
   };
   const onAppDebug = () => {
-    if (tv && appId) appDebug(tv.ip, appId, parseParams(appParams, tv.platform));
+    if (tv && app?.id) appDebug(tv.ip, app.id, parseParams(appParams, tv.platform));
   };
   const onAppClose = () => {
-    if (tv && appId) appClose(tv.ip, appId);
+    if (tv && app?.id) appClose(tv.ip, app.id);
   };
   const onWakeUp = () => {
     if (tv) wakeUpMutation.mutate(tv.ip);
@@ -97,9 +97,9 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
   };
   const onAppInstall = async ({ target }: ChangeEvent<HTMLInputElement>) => {
     const file = target?.files?.[0];
-    if (file && tv && appId) {
+    if (file && tv && app?.id) {
       target.value = '';
-      appInstallMutation.mutate({ tvIp: tv.ip, file, appId });
+      appInstallMutation.mutate({ tvIp: tv.ip, file, appId: app.id });
     }
   };
   const appUninstallMutation = useMutation(
@@ -110,25 +110,28 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
   );
   const onAppUninstall = async () => {
     popupRef.current?.close();
-    if (tv && appId) {
-      appUninstallMutation.mutate({ tvIp: tv.ip, appId });
+    if (tv && app?.id) {
+      appUninstallMutation.mutate({ tvIp: tv.ip, appId: app.id });
     }
   };
 
   const { username } = useAuth();
   const { tvControl, devModeControl, applicationControl, wakeUpControl, remoteControl } = getControlState({
     username,
-    appId,
+    appId: app?.id,
     tv,
   });
 
   const popupRef = useRef<PopupActions>();
 
+  const isInstallable = app?.isInstallable !== false;
+  const moreButtonDisabled = applicationControl.disabled || !isInstallable;
+
   return (
     <div className={styles.buttons}>
       <Tooltip id={styles.tooltip} effect="solid" arrowColor="transparent" />
       <div className={styles.buttonsGroup}>
-        {appState?.installed === false ? (
+        {isInstallable && appState?.installed === false ? (
           <Button
             className={styles.installButton}
             disabled={applicationControl.disabled}
@@ -169,11 +172,11 @@ const Controls: React.FC<Props> = ({ tv, appId, appParams, isTVInfoOpen, toggleT
                 <Button
                   className={styles.moreButton}
                   variant="secondary"
-                  disabled={applicationControl.disabled}
+                  disabled={moreButtonDisabled}
                   tooltipId={styles.tooltip}
-                  tooltipText={applicationControl.disableReason}
+                  tooltipText={moreButtonDisabled ? 'No options available' : null}
                 >
-                  <MoreIcon className={applicationControl.disabled ? styles.moreIconDisabled : styles.moreIcon} />
+                  <MoreIcon className={moreButtonDisabled ? styles.moreIconDisabled : styles.moreIcon} />
                 </Button>
               }
               closeOnDocumentClick={true}
