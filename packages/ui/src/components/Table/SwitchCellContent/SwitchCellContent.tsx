@@ -1,4 +1,4 @@
-import Switch from "react-switch";
+import Switch from 'react-switch';
 
 import { OnEditRow, RowInfo } from '../types';
 import styles from './SwitchCellContent.module.css';
