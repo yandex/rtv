@@ -31,4 +31,11 @@ export const appColumns: ColumnsInfo<KnownApp> = {
     defaultValue: defaultParamsPlaceholder,
     placeholder: 'Params example in JSON5 format',
   },
+  isInstallable: {
+    label: 'Installable',
+    type: 'boolean',
+    defaultValue: true,
+    width: 100,
+    alignment: 'center',
+  }
 };

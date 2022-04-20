@@ -36,6 +36,10 @@ export interface KnownApp extends Record<string, unknown> {
    * Default application params
    */
   defaultParams: string;
+  /**
+   * Is installable app (e.g. DevMode on WebOS is not installablle)
+   */
+  isInstallable: boolean;
 }
 
 export interface InstallAppResult {

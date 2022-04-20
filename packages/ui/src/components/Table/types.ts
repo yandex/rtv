@@ -1,6 +1,6 @@
 export type ColumnsInfo<TRowData> = Partial<Record<keyof TRowData, ColumnInfo>>;
 
-export type ColumnType = 'text' | 'visibility' | 'json5' | 'code';
+export type ColumnType = 'text' | 'visibility' | 'json5' | 'code' | 'boolean';
 
 export type Alignment = 'left' | 'center' | 'right';
 

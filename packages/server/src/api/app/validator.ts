@@ -11,4 +11,5 @@ export const app = Joi.object<KnownApp>({
   description: Joi.string().allow(''),
   defaultParams: Joi.string().allow(''),
   evalOnDebug: Joi.string().allow(''),
+  isInstallable: Joi.boolean(),
 });
