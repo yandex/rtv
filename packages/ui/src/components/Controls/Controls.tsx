@@ -75,13 +75,13 @@ const Controls: React.FC<Props> = ({ tv, app, appParams, isTVInfoOpen, toggleTVI
   });
 
   const onAppLaunch = () => {
-    if (tv && app?.id) appLaunch(tv.ip, app.id, parseParams(appParams, tv.platform));
+    if (tv && app?.id) appLaunch(tv.ip, app.alias, parseParams(appParams, tv.platform));
   };
   const onAppDebug = () => {
-    if (tv && app?.id) appDebug(tv.ip, app.id, parseParams(appParams, tv.platform));
+    if (tv && app?.id) appDebug(tv.ip, app.alias, parseParams(appParams, tv.platform));
   };
   const onAppClose = () => {
-    if (tv && app?.id) appClose(tv.ip, app.id);
+    if (tv && app?.id) appClose(tv.ip, app.alias);
   };
   const onWakeUp = () => {
     if (tv) wakeUpMutation.mutate(tv.ip);
@@ -99,7 +99,7 @@ const Controls: React.FC<Props> = ({ tv, app, appParams, isTVInfoOpen, toggleTVI
     const file = target?.files?.[0];
     if (file && tv && app?.id) {
       target.value = '';
-      appInstallMutation.mutate({ tvIp: tv.ip, file, appId: app.id });
+      appInstallMutation.mutate({ tvIp: tv.ip, file, appId: app.alias });
     }
   };
   const appUninstallMutation = useMutation(
@@ -111,7 +111,7 @@ const Controls: React.FC<Props> = ({ tv, app, appParams, isTVInfoOpen, toggleTVI
   const onAppUninstall = async () => {
     popupRef.current?.close();
     if (tv && app?.id) {
-      appUninstallMutation.mutate({ tvIp: tv.ip, appId: app.id });
+      appUninstallMutation.mutate({ tvIp: tv.ip, appId: app.alias });
     }
   };
 
