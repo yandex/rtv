@@ -12,7 +12,17 @@ export default (client: Client): Record<string, RTVCommand> => ({
     action: ({ fullscan }) => client.tv.list({ fullscan }),
     options: [['-s, --fullscan', 'scan server network (for Tizen only)', false]],
   },
-
+  
+  known: {
+    command: 'known',
+    description: 'List all known TVs',
+    action: ({ all, extra }) => client.tv.list({ showInvisible: all, additionalInfo: extra }),
+    options: [
+      ['-a, --all', 'Show all TVs (including invisible ones)', false],
+      ['-e, --extra', 'Add additional info to the response', false],
+    ],
+  },
+  
   info: {
     command: 'info <ip>',
     description: 'Get info about connected TV',
