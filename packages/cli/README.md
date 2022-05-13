@@ -50,6 +50,7 @@ Options:
 
 Commands:
   list [options]                                 List all connected TVs
+  known [options]                                List all known TVs
   info <ip>                                      Get info about connected TV
   dev-panel <ip>                                 Get developer panel URL
   tv-logs <ip>                                   Connect logger to tv and get log page
