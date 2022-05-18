@@ -17,7 +17,7 @@ import * as TvService from './service';
 import { KnownTv, RemoteControlInfo, Result, TVInfo, URLInfo } from './types';
 
 const logger = Loggee.create();
-const PING_TIMEOUT = 1;
+const SCAN_TIMEOUT = 1;
 
 interface PkgInfo {
   downloadPath: string;
@@ -37,7 +37,8 @@ export const getKnownTvs = async (req: Request, res: Response<KnownTv[]>) => {
         ...tv,
         lastUsed: formatLastUsedInfo(getTvLastUsed(tv.ip)),
         occupied: whoIsUsingTv(tv.ip),
-        online: await isOnline(tv.ip, PING_TIMEOUT),
+        // vidaa TVs not support ping
+        online: tv.platform === 'vidaa' ? await platform.isReady(tv.ip) : await isOnline(tv.ip, SCAN_TIMEOUT),
       }))
     );
   }
@@ -91,7 +92,7 @@ export const launchBrowser = async (req: Request, res: Response<Result>) => {
 export const wakeUpTv = async (req: Request, res: Response<Result>) => {
   const { ip } = req.query as Record<string, string>;
   const port = await platform.getWakeUpPort(ip);
-  if (!port) {
+  if (port === null) {
     throw new Error('Not supported by platform');
   }
   try {

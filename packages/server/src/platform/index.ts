@@ -3,24 +3,26 @@
  */
 import fs from 'fs-extra';
 import { formatLastUsedInfo, getTvLastUsed } from '../helpers/tv-last-used';
-import { getAppByAppId } from '../api/app/service';
+import { getAppByAlias, getAppByAppId, getAppById } from '../api/app/service';
 import { getKnownTv, getKnownTvById } from '../api/tv/service';
 import { KnownTv } from '../api/tv/types';
 import * as tizen from './tizen';
 import * as webos from './webos';
 import * as playstation from './playstation';
 import * as orsay from './orsay';
+import * as vidaa from './vidaa';
 import { remoteEval } from './shared/remote-eval';
 import { WebosPackAppOptions } from './webos';
 import { TizenPackAppOptions } from './tizen/app-packager';
 
-export type Platform = 'webos' | 'tizen' | 'orsay' | 'playstation';
+export type Platform = 'webos' | 'tizen' | 'orsay' | 'playstation' | 'vidaa';
 
 const PLATFORMS = {
   tizen,
   webos,
   playstation,
   orsay,
+  vidaa,
 };
 
 /**
@@ -162,7 +164,7 @@ export const debugApp = async function (
 ) {
   const platform = getPlatform(tvIP);
   const debugInfo = await platform.debugApp(tvIP, appId, params, options);
-  const app = getAppByAppId(appId, platform.NAME);
+  const app = getAppByAppId(appId, platform.NAME) || getAppById(appId) || getAppByAlias(appId);
 
   const evalOnDebug = (options && options.eval) || (app && app.evalOnDebug);
   if (evalOnDebug) {

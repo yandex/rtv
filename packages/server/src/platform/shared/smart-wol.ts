@@ -1,7 +1,7 @@
 import wol from 'wakeonlan';
 import { getKnownTvs } from '../../api/tv/service';
 
-export const wakeUpTv = async (ip: string, port: number) => {
+export const wakeUpTv = async (ip: string, port?: number) => {
   const tvs = getKnownTvs();
   const tvConfig = tvs.find((tv) => tv.ip === ip);
   if (!tvConfig) {

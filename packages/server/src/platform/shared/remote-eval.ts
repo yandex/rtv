@@ -38,7 +38,7 @@ export const remoteEval = async (
   const wsp = createWsp(wsUrl);
   try {
     await wsp.open();
-    if (platform !== 'playstation') {
+    if (platform !== 'playstation' && platform !== 'vidaa') {
       await waitForPage(wsp);
     }
     wsp.sendPacked(evalPayload(expression));
