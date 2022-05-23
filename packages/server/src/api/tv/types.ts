@@ -93,7 +93,7 @@ interface PkgInfo {
   size: string;
 }
 
-export type Platform = 'webos' | 'tizen' | 'orsay' | 'playstation';
+export type Platform = 'webos' | 'tizen' | 'orsay' | 'playstation' | 'vidaa';
 
 export interface SavedTv {
   /**

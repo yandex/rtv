@@ -32,3 +32,7 @@ export const getAppByAppId = (appId: string, platform: Platform) =>
   getApps()
     .find({ [appIdName(platform)]: appId })
     .value();
+
+export const getAppById = (id: string) => getApps().getById(id).value();
+
+export const getAppByAlias = (alias: string) => getApps().find({ alias }).value();

@@ -3,7 +3,7 @@ import { KnownTv } from 'rtv-client';
 
 const ipSchema = Joi.string().ip().required();
 const aliasSchema = Joi.string().required();
-const platformSchema = Joi.string().valid('tizen', 'webos', 'playstation', 'orsay').required();
+const platformSchema = Joi.string().valid('tizen', 'webos', 'playstation', 'orsay', 'vidaa').required();
 
 export const validateTv = ({ row, rows }: { row: KnownTv; rows: KnownTv[] }) => {
   const result: Record<string, string> = {};
@@ -25,7 +25,7 @@ export const validateTv = ({ row, rows }: { row: KnownTv; rows: KnownTv[] }) => 
 
   const { error: platformError } = platformSchema.validate(row.platform);
   if (platformError) {
-    result.platform = 'Please enter platform (tizen, webos, playstation, orsay)';
+    result.platform = 'Please enter platform (tizen, webos, playstation, orsay, vidaa)';
   }
 
   return result;

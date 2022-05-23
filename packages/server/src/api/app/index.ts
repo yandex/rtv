@@ -164,6 +164,10 @@ function getHostedDevtoolsUrl(debugInfo: DebugInfo) {
     return getHostedTizenDevtoolsUrl(debugInfo);
   }
 
+  if (platform === 'vidaa') {
+    return null;
+  }
+
   //playstation and others
   return `devtools`;
 }
