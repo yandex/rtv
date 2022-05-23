@@ -9,4 +9,5 @@ export const tvColumns: ColumnsInfo<KnownTv> = {
   platform: { label: 'Platform', placeholder: 'Platform*' },
   mac: { label: 'MAC', placeholder: 'Enter MAC' },
   webOSPassphrase: { label: 'Passphrase(webOS)', placeholder: 'Enter passphrase', width: 175 },
+  streamUrl: { label: 'Stream URL', placeholder: 'Enter stream url' },
 };
