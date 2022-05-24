@@ -1,6 +1,6 @@
 {
   "name": "rtv-ui",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "Remote TV control UI",
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
     "react-toastify": "^8.1.0",
     "react-tooltip": "^4.2.21",
     "reactjs-popup": "^2.0.5",
-    "rtv-client": "^2.6.0",
+    "rtv-client": "^2.6.1",
     "typescript": "^4.5.4",
     "web-vitals": "^2.1.3"
   },

@@ -1,6 +1,6 @@
 {
   "name": "rtv-server",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "Remote TV control server for developers",
   "repository": {
     "type": "git",
