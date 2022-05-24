@@ -7,6 +7,6 @@ export const tv = Joi.object<KnownTv>({
   platform: Joi.string().valid('tizen', 'webos', 'playstation', 'orsay', 'vidaa'),
   mac: Joi.string().allow(''),
   webOSPassphrase: Joi.string().allow(''),
-  streamUrl: Joi.string().uri().allow(''),
+  streamUrl: Joi.string().allow(''),
   isVisible: Joi.bool(),
 });
