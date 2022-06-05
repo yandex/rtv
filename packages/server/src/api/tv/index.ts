@@ -12,12 +12,10 @@ import { RTV_USER, getRtvUserFromExpressRequest } from '../../helpers/rtv-user';
 import { formatLastUsedInfo, freeTv as free, getTvLastUsed, whoIsUsingTv } from '../../helpers/tv-last-used';
 import * as wol from '../../platform/shared/smart-wol';
 import { getAppByAppId } from '../app/service';
-import { isOnline } from '../../helpers/network';
 import * as TvService from './service';
 import { KnownTv, RemoteControlInfo, Result, TVInfo, URLInfo } from './types';
 
 const logger = Loggee.create();
-const SCAN_TIMEOUT = 1;
 
 interface PkgInfo {
   downloadPath: string;
@@ -37,8 +35,7 @@ export const getKnownTvs = async (req: Request, res: Response<KnownTv[]>) => {
         ...tv,
         lastUsed: formatLastUsedInfo(getTvLastUsed(tv.ip)),
         occupied: whoIsUsingTv(tv.ip),
-        // vidaa TVs not support ping
-        online: tv.platform === 'vidaa' ? await platform.isReady(tv.ip) : await isOnline(tv.ip, SCAN_TIMEOUT),
+        online: await platform.isOnline(tv.ip, tv.platform),
       }))
     );
   }
@@ -65,8 +62,14 @@ export const getTvList = async (req: Request, res: Response<KnownTv[]>) => {
 };
 
 export const getTvInfo = async (req: Request, res: Response<TVInfo>) => {
-  const info = await platform.getTVInfo(req.query.ip as string);
-  res.json(info);
+  const ip = req.query.ip as string;
+  const info = await platform.getTVInfo(ip);
+  const online = await platform.isOnline(ip, info.platform);
+  res.json({
+    ...info,
+    lastUsed: formatLastUsedInfo(getTvLastUsed(ip)),
+    online,
+  });
 };
 
 export const getDevPanelUrl = async (req: Request, res: Response<URLInfo>) => {

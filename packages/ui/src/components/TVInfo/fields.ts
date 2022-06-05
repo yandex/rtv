@@ -14,6 +14,7 @@ export const fieldNameMap: Record<keyof TVInfo, string> = {
   resolution: 'Resolution',
   osVersion: 'OS Version',
   lastUsed: 'Last Used',
+  online: 'Online',
   mac: 'MAC',
   webOSPassphrase: 'Passphrase',
   isVisible: 'Is Visible',

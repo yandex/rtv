@@ -7,6 +7,10 @@ export interface TVInfo extends SavedTv {
    */
   lastUsed: string;
   /**
+   * Online
+   */
+  online: boolean;
+  /**
    * TV name
    */
   name?: string;

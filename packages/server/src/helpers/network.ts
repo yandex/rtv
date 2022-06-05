@@ -74,7 +74,7 @@ export const areInSameSubnet = function (ip1: string, ip2: string) {
 /**
  * Check device is online (via ping)
  */
-export const isOnline = async (tvIp: string, timeout?: number) => {
+export const isOnline = async (tvIp: string, timeout = 1) => {
   try {
     const res = await ping.probe(tvIp, { timeout });
     return res.alive;
