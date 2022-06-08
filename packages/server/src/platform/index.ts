@@ -2,10 +2,10 @@
  * Platform API
  */
 import fs from 'fs-extra';
-import { formatLastUsedInfo, getTvLastUsed } from '../helpers/tv-last-used';
 import { getAppByAlias, getAppByAppId, getAppById } from '../api/app/service';
 import { getKnownTv, getKnownTvById } from '../api/tv/service';
 import { KnownTv } from '../api/tv/types';
+import { isOnline as ping } from '../helpers/network';
 import * as tizen from './tizen';
 import * as webos from './webos';
 import * as playstation from './playstation';
@@ -67,6 +67,18 @@ export const isReady = async (tvIp: string, timeout?: number) => {
 };
 
 /**
+ * Is TV online
+ */
+export const isOnline = async (tvIp: string, platform: Platform) => {
+  // vidaa TVs not support ping
+  try {
+    return platform === 'vidaa' ? await isReady(tvIp) : await ping(tvIp);
+  } catch (_e) {
+    return false;
+  }
+};
+
+/**
  * Init platforms on start server
  */
 export const init = () => {
@@ -97,7 +109,6 @@ export const getTVInfo = async function (tvIP: string) {
   return {
     ...knownTv,
     ...tvInfo,
-    lastUsed: formatLastUsedInfo(getTvLastUsed(tvIP)),
   };
 };
 

@@ -1,6 +1,7 @@
 import nock from 'nock';
 import { assert } from 'chai';
 import sinon from 'sinon';
+import { promise as ping } from 'ping';
 import MemoryAdapter from 'lowdb/adapters/Memory';
 
 import { initDb } from '../../src/helpers/db';
@@ -10,6 +11,7 @@ import { KnownTv } from '../../src/api/tv/types';
 
 import { httpPort } from '../constants';
 import { assertError, getMock, req, reqJson, reqPostJson, stubCmd, stubWS } from '../helpers';
+import { pingResponse } from '../mocks/pingResponse';
 
 describe('tv', () => {
   describe('info', () => {
@@ -36,6 +38,7 @@ describe('tv', () => {
 
     it('tizen24 + no access', async () => {
       const response = getMock('tizen24/msf_tv_info.json');
+      sinon.stub(ping, 'probe').returns(pingResponse);
       nock('http://1.2.3.5:8001').get('/api/v2/').reply(200, response);
       const result = await reqJson('api/tv/info?ip=1.2.3.5');
       assert.deepEqual(result, {
@@ -53,11 +56,13 @@ describe('tv', () => {
         osVersion: null,
         alias: '',
         lastUsed: 'unknown',
+        online: true,
       });
     });
 
     it('tizen24 + has access', async () => {
       const response = getMock('tizen24/msf_tv_info.json');
+      sinon.stub(ping, 'probe').returns(pingResponse);
       response.device.developerIP = '1.2.3.4';
       nock('http://1.2.3.5:8001').persist().get('/api/v2/').reply(200, response);
       stubCmd('sdb connect 1.2.3.5', getMock('tizen24/sdb_connect_ok.txt'));
@@ -78,11 +83,13 @@ describe('tv', () => {
         osVersion: '2.4.0',
         alias: '',
         lastUsed: 'unknown',
+        online: true,
       });
     });
 
     it('tizen30 + no access', async () => {
       nock('http://1.2.3.5:8001').get('/api/v2/').reply(200, getMock('tizen30/msf_tv_info.json'));
+      sinon.stub(ping, 'probe').returns(pingResponse);
       const result = await reqJson('api/tv/info?ip=1.2.3.5');
       assert.deepEqual(result, {
         platform: 'tizen',
@@ -99,11 +106,13 @@ describe('tv', () => {
         osVersion: null,
         alias: '',
         lastUsed: 'unknown',
+        online: true,
       });
     });
 
     it('tizen23 + no access', async () => {
       const response = getMock('tizen23/msf_tv_info.json');
+      sinon.stub(ping, 'probe').returns(pingResponse);
       nock('http://1.2.3.6:8001').get('/api/v2/').reply(200, response);
       const result = await reqJson('api/tv/info?ip=1.2.3.6');
       assert.deepEqual(result, {
@@ -121,11 +130,13 @@ describe('tv', () => {
         osVersion: null,
         alias: 'test',
         lastUsed: 'unknown',
+        online: true,
       });
     });
 
     it('tizen23 + has access', async () => {
       const response = getMock('tizen23/msf_tv_info.json');
+      sinon.stub(ping, 'probe').returns(pingResponse);
       response.device.developerIP = '1.2.3.4';
       nock('http://1.2.3.6:8001').persist().get('/api/v2/').reply(200, response);
       stubCmd('sdb connect 1.2.3.6', getMock('tizen23/sdb_connect_ok.txt'));
@@ -146,6 +157,7 @@ describe('tv', () => {
         osVersion: '2.3.0',
         alias: 'test',
         lastUsed: 'unknown',
+        online: true,
       });
     });
   });
