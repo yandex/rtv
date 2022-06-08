@@ -222,6 +222,13 @@ export const deleteTv = function () {
 export const getRemoteControlWsInfo = async function (tvIP: string) {
   const remoteControl = new TizenWsRemoteControl(tvIP);
   const wsUrl = await remoteControl.getWsUrl();
+  // Hack to activate connection permission popup if rtv not allowed to connect TV yet.
+  // Previously it was not shown (no idea why) when rtv was launched with nginx
+  try {
+    await remoteControl.connect();
+  } finally {
+    await remoteControl.disconnect();
+  }
   return {
     rawWsUrl: wsUrl,
     payloadPattern: remoteControl.getRemoteKeyPayload(),
