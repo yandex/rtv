@@ -44,7 +44,7 @@
 .table {
   display: grid;
   grid-template-columns: auto auto;
-  grid-template-rows: repeat(19, auto);
+  grid-template-rows: repeat(21, auto);
   grid-auto-flow: column;
   column-gap: 32px;
 }

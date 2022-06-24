@@ -32,6 +32,11 @@ const KeyMap = {
   Green: 'GREEN',
   Blue: 'BLUE',
   Yellow: 'YELLOW',
+  Play: 'PLAY',
+  Pause: 'PAUSE',
+  Stop: 'STOP',
+  Rewind: 'REWIND',
+  Fastforward: 'FASTFORWARD',
 };
 
 export default KeyMap;

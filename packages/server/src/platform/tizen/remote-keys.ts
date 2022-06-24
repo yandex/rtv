@@ -36,6 +36,11 @@ const KeyMap = {
   TvSource: 'KEY_DTV',
   HDMISource: 'KEY_HDMI',
   SmartHub: 'KEY_CONTENTS',
+  Play: 'KEY_PLAY',
+  Pause: 'KEY_PAUSE',
+  Stop: 'KEY_STOP',
+  Fastforward: 'KEY_FF',
+  Rewind: 'KEY_REWIND',
 };
 
 export default KeyMap;

@@ -238,6 +238,36 @@ const tizenKeys: RemoteKey[] = [
     tvKeyCode: 'SmartHub',
     tvKeyCodeLabel: 'Smart Hub',
   },
+  {
+    keyCode: 'Semicolon',
+    keyCodeLabel: 'Semicolon',
+    tvKeyCode: 'Play',
+    tvKeyCodeLabel: 'Play',
+  },
+  {
+    keyCode: 'Quote',
+    keyCodeLabel: 'Quote',
+    tvKeyCode: 'Pause',
+    tvKeyCodeLabel: 'Pause',
+  },
+  {
+    keyCode: 'Backslash',
+    keyCodeLabel: 'Backslash',
+    tvKeyCode: 'Stop',
+    tvKeyCodeLabel: 'Stop',
+  },
+  {
+    keyCode: 'BracketLeft',
+    keyCodeLabel: 'BracketLeft',
+    tvKeyCode: 'Rewind',
+    tvKeyCodeLabel: 'Rewind',
+  },
+  {
+    keyCode: 'BracketRight',
+    keyCodeLabel: 'BracketRight',
+    tvKeyCode: 'Fastforward',
+    tvKeyCodeLabel: 'Fastforward',
+  },
 ];
 
 const webosKeys: RemoteKey[] = [
@@ -357,6 +387,36 @@ const webosKeys: RemoteKey[] = [
     tvKeyCodeLabel: 'Yellow',
   },
   ...digits,
+  {
+    keyCode: 'Semicolon',
+    keyCodeLabel: 'Semicolon',
+    tvKeyCode: 'Play',
+    tvKeyCodeLabel: 'Play',
+  },
+  {
+    keyCode: 'Quote',
+    keyCodeLabel: 'Quote',
+    tvKeyCode: 'Pause',
+    tvKeyCodeLabel: 'Pause',
+  },
+  {
+    keyCode: 'Backslash',
+    keyCodeLabel: 'Backslash',
+    tvKeyCode: 'Stop',
+    tvKeyCodeLabel: 'Stop',
+  },
+  {
+    keyCode: 'BracketLeft',
+    keyCodeLabel: 'BracketLeft',
+    tvKeyCode: 'Rewind',
+    tvKeyCodeLabel: 'Rewind',
+  },
+  {
+    keyCode: 'BracketRight',
+    keyCodeLabel: 'BracketRight',
+    tvKeyCode: 'Fastforward',
+    tvKeyCodeLabel: 'Fastforward',
+  },
 ];
 
 export const remoteKeysByPlatform: Partial<Record<Platform, RemoteKey[]>> = {
