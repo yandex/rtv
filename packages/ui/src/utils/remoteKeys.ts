@@ -111,8 +111,8 @@ const tizenKeys: RemoteKey[] = [
     tvKeyCodeLabel: 'Enter',
   },
   {
-    keyCode: 'Return',
-    keyCodeLabel: 'Return',
+    keyCode: 'Backspace',
+    keyCodeLabel: 'Backspace',
     tvKeyCode: 'Return',
     tvKeyCodeLabel: 'Return',
   },
