@@ -43,7 +43,7 @@ app.use('/', web);
 app.use('/api', api);
 app.use('/proxy', proxy);
 app.use('/devtools', devtools);
-app.use('/uploads', express.static(path.join(config.workDirPath, 'uploads')));
+app.use('/uploads', express.static(path.join(config.rtvDataPath, 'uploads')));
 
 let httpServer: http.Server | undefined;
 let httpsServer: https.Server | undefined;

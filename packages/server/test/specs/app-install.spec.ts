@@ -13,7 +13,7 @@ describe('app-install', () => {
       stubCmd('sdb -s 1.2.3.5 capability', getMock('tizen24/sdb_capability.txt'));
       // tizen install outputs to stderr, not stdout
       stubCmd(
-        `tizen install -s 1.2.3.5:26101 -n mock_uid.wgt -- ${os.tmpdir()}/rtv-temp/uploads`,
+        `tizen install -s 1.2.3.5:26101 -n mock_uid.wgt -- ${os.homedir()}/rtv-data/uploads`,
         getMock('tizen24/sdb_install_ok.txt'),
         { error: true }
       );
@@ -64,7 +64,7 @@ describe('app-install', () => {
       stubCmd('sdb connect 1.2.3.5', getMock('tizen24/sdb_connect_ok.txt'));
       stubCmd('sdb -s 1.2.3.5 capability', getMock('tizen24/sdb_capability.txt'));
       stubCmd(
-        `tizen install -s 1.2.3.5:26101 -n mock_uid.wgt -- ${os.tmpdir()}/rtv-temp/uploads`,
+        `tizen install -s 1.2.3.5:26101 -n mock_uid.wgt -- ${os.homedir()}/rtv-data/uploads`,
         getMock('tizen24/sdb_install_broken_package.txt'),
         { error: true }
       );

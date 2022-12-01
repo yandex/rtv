@@ -232,7 +232,7 @@ async function deleteAppFromTvStorage(appId: string, tv: KnownTv) {
   if (tv && tv.pkgUrls) {
     const appInfo = tv.pkgUrls[appId];
     if (appInfo) {
-      const packagePath = path.join(config.workDirPath, appInfo.downloadPath);
+      const packagePath = path.join(config.rtvDataPath, appInfo.downloadPath);
       tv.pkgUrls[appId] = undefined;
       try {
         await fs.remove(packagePath);
