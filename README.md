@@ -15,7 +15,7 @@ Tools for Smart TV developers.
 
 ### Run RTV in Docker
 
-The easiest way to run RTV is in a Docker container. It contains the [Samsung Tizen CLI](https://developer.samsung.com/smarttv/develop/getting-started/using-sdk/command-line-interface.html) and [LG webOS CLI](https://webostv.developer.lge.com/sdk/installation/download-installer/).
+The easiest way to run RTV is in a Docker container. It contains the [Samsung Tizen CLI](https://developer.samsung.com/smarttv/develop/getting-started/using-sdk/command-line-interface.html) and [LG webOS CLI](https://webostv.developer.lge.com/develop/tools/cli-introduction).
 
 On Linux:
 
@@ -44,7 +44,7 @@ On MacOS:
 Note: NETWORK_MODE=host allows TVs to scan and wake on LAN, but doesn't work on MacOS.
 
 Note: `WEBOS_ACCOUNT_LOGIN` and `WEBOS_ACCOUNT_PASSWORD` are only required for WebOS TVs.
-A login and password can be obtained [here](https://webostv.developer.lge.com/develop/app-test/preparing-account/). These are required for logging in to WebOS Developer Mode app.
+A login and password can be obtained [here](с/). These are required for logging in to WebOS Developer Mode app.
 
 ### Setup without Docker
 
@@ -59,7 +59,7 @@ A login and password can be obtained [here](https://webostv.developer.lge.com/de
 
 1. Install the necessary SDK:
    - [Samsung Tizen CLI](https://developer.samsung.com/smarttv/develop/getting-started/using-sdk/command-line-interface.html)
-   - [LG webOS CLI](https://webostv.developer.lge.com/sdk/installation/download-installer/)
+   - [LG webOS CLI](https://webostv.developer.lge.com/develop/tools/cli-installation)
 
 2. `nvm use` (use the necessary version of Node.JS in [Node Version Manager](https://github.com/nvm-sh/nvm))
 
@@ -127,7 +127,7 @@ Enter the `IP`, `alias`, and `platform` and save. For example:
       platform = webos
     ```
 
-2. [Install Developer Mode App](https://webostv.developer.lge.com/develop/app-test/using-devmode-app/#installDevModeApp) on the TV if it isn't installed already.
+2. [Install Developer Mode App](https://webostv.developer.lge.com/develop/getting-started/developer-mode-app#installing-developer-mode-app) on the TV if it isn't installed already.
 
 3. On the RTV UI main screen, select the added TV from the drop-down list and press the `Dev Mode` button if an LG account was specified when starting RTV, or log in manually.
 
