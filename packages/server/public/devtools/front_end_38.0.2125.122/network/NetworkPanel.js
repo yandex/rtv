@@ -1791,6 +1791,8 @@ WebInspector.NetworkPanel = function()
     this._searchableView = new WebInspector.SearchableView(this);
     this._searchableView.show(this.element);
     this._contentsElement = this._searchableView.element;
+    // Fix not scrollable content in network panel
+    this._contentsElement.style.height = "calc(100% - 46px)";
 
     this._splitView = new WebInspector.SplitView(true, false, "networkPanelSplitViewState");
     this._splitView.show(this._contentsElement);
