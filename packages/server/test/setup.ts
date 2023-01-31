@@ -1,9 +1,9 @@
 import os from 'os';
 import path from 'path';
 import fs from 'fs-extra';
-import websocket from 'websocket';
+import websocket from 'ws';
 import nock from 'nock';
-import { WebSocket } from 'mock-socket';
+import { WebSocket as WebSocketMock } from 'mock-socket';
 import chai from 'chai';
 import loggee, { Level } from 'loggee';
 import sinon from 'sinon';
@@ -12,6 +12,7 @@ import chaiString from 'chai-string';
 
 // Should be called before uuid import (../src/main => ... => ../middleware/file-uploader => uuid)
 mockRequire('uuid', { v4: () => 'mock_uid' });
+//mockRequire('ws', { ...WebSocketMock, Server });
 
 import { merge } from '../src/config';
 import { start, close } from '../src/main';
@@ -43,7 +44,7 @@ before(async () => {
 });
 
 beforeEach(() => {
-  sinon.stub(websocket, 'w3cwebsocket').callsFake((url) => new WebSocket(url));
+  sinon.stub(websocket, 'WebSocket').callsFake((url) => new WebSocketMock(url));
   sinon.stub(os, 'networkInterfaces').returns({
     wifi: [{ family: 'IPv4', address: '1.2.3.4' }],
   });

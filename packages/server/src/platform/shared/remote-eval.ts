@@ -3,7 +3,7 @@
  * Especially needed for Tizen, because `sbd` doesn't support parameters.
  */
 import WebSocketAsPromised from 'websocket-as-promised';
-import websocket from 'websocket';
+import websocket from 'ws';
 import Loggee from 'loggee';
 import { Platform } from '..';
 
@@ -72,7 +72,7 @@ async function waitForPage(wsp: WebSocketAsPromised) {
 
 function createWsp(wsUrl: string) {
   const wsp = new WebSocketAsPromised(wsUrl, {
-    createWebSocket: (url) => new websocket.w3cwebsocket(url),
+    createWebSocket: (url) => new websocket.WebSocket(url),
     packMessage: (data) => JSON.stringify(data),
     unpackMessage: (message) => JSON.parse(message.toString()),
   });

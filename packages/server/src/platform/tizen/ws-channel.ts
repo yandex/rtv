@@ -3,7 +3,7 @@
  * Used for messaging with apps.
  */
 import { URL } from 'url';
-import websocket from 'websocket';
+import websocket from 'ws';
 import WebSocketAsPromised from 'websocket-as-promised';
 import PromiseController from 'promise-controller';
 
@@ -37,7 +37,7 @@ export default class TizenWsChannel {
   async connect(urlParams: BuildUrlParams, handler: (data: Message) => void, timeout = WS_CONNECT_DEFAULT_TIMEOUT) {
     const url = this.buildUrl(urlParams);
     this._wsp = new WebSocketAsPromised(url, {
-      createWebSocket: (url) => new websocket.w3cwebsocket(url),
+      createWebSocket: (url) => new websocket.WebSocket(url),
       packMessage: (data) => JSON.stringify(data),
       unpackMessage: (message) => JSON.parse(message.toString()),
       attachRequestId: (data, requestId) => Object.assign({ id: requestId }, data),
