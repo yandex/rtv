@@ -12,7 +12,6 @@ import chaiString from 'chai-string';
 
 // Should be called before uuid import (../src/main => ... => ../middleware/file-uploader => uuid)
 mockRequire('uuid', { v4: () => 'mock_uid' });
-//mockRequire('ws', { ...WebSocketMock, Server });
 
 import { merge } from '../src/config';
 import { start, close } from '../src/main';
