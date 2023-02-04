@@ -73,7 +73,7 @@ export const waitForReady = async function (ip: string) {
 export const isReady = async function (ip: string, timeout = READY_TIMEOUT) {
   try {
     // WebOS TVs return 'Hello world' on this endpoint
-    const response = await fetch(`http://${ip}:3000`, { timeout });
+    const response = await fetch(`https://${ip}:3001`, { timeout });
     return response.status === 200;
   } catch (e) {
     return false;

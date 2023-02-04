@@ -3,7 +3,7 @@
  * @see https://github.com/hobbyquaker/lgtv2
  */
 import { RequestOptions } from 'https';
-import websocket from 'ws';
+import WebSocket from 'ws';
 import WebSocketAsPromised from 'websocket-as-promised';
 import PromiseController from 'promise-controller';
 import { getKnownTv, saveKnownTv } from '../../api/tv/service';
@@ -41,10 +41,11 @@ export default class WebosWsRemoteControl {
   _pointerWs: WebSocketAsPromised | undefined;
 
   constructor(tvIp: string) {
-    this.wsUrl = `ws://${tvIp}:3000`;
+    this.wsUrl = `wss://${tvIp}:3001`;
     this.tv = getKnownTv(tvIp);
     this._wsp = new WebSocketAsPromised(this.wsUrl, {
-      createWebSocket: (url) => new websocket.WebSocket(url),
+      createWebSocket: (url) => new WebSocket(url),
+      extractMessageData: (event) => event,
       packMessage: (data) => JSON.stringify(data),
       unpackMessage: (message) => JSON.parse(message.toString()),
       attachRequestId: (data, requestId) => Object.assign({ id: requestId }, data),
@@ -96,7 +97,8 @@ export default class WebosWsRemoteControl {
 
     if (!this._pointerWs) {
       this._pointerWs = new WebSocketAsPromised(this._pointerWsUrl, {
-        createWebSocket: (url) => new websocket.WebSocket(url),
+        createWebSocket: (url) => new WebSocket(url),
+        extractMessageData: (event) => event,
       });
       await this._pointerWs.open();
     }
