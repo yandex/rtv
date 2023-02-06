@@ -2,7 +2,7 @@
  * Multi-channel websocket stream server
  */
 import { IncomingMessage } from 'http';
-import WebSocket from 'ws';
+import { WebSocket, WebSocketServer } from 'ws';
 import Loggee from 'loggee';
 import { values as config } from '../../config';
 
@@ -11,7 +11,7 @@ const streamUrlRegExp = /\/streams\/\d+/;
 
 type ChannelWebSocket = WebSocket & { channelId?: number };
 
-interface StreamWebsocketServer extends WebSocket.Server {
+interface StreamWebsocketServer extends WebSocketServer {
   clients: Set<ChannelWebSocket>;
 }
 
@@ -20,7 +20,7 @@ export class StreamServer {
   private _connectionCount = 0;
 
   constructor() {
-    this._wsServer = new WebSocket.Server({
+    this._wsServer = new WebSocketServer({
       port: config.streamsPort || 8081,
       perMessageDeflate: false,
     });
