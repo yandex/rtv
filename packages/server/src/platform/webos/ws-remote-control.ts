@@ -3,11 +3,18 @@
  * @see https://github.com/hobbyquaker/lgtv2
  */
 import { RequestOptions } from 'https';
-import websocket from 'websocket';
 import WebSocketAsPromised from 'websocket-as-promised';
 import PromiseController from 'promise-controller';
 import { getKnownTv, saveKnownTv } from '../../api/tv/service';
 import { KnownTv } from '../../api/tv/types';
+import {
+  attachRequestId,
+  createWebSocket,
+  extractMessageData,
+  extractRequestId,
+  packMessage,
+  unpackMessage,
+} from '../shared/websocket-as-promised-options';
 import helloMessage from './remote-hello-msg.json';
 
 const PAYLOAD_PATTERN = 'type:button\nname:{{KEY}}\n\n';
@@ -41,14 +48,15 @@ export default class WebosWsRemoteControl {
   _pointerWs: WebSocketAsPromised | undefined;
 
   constructor(tvIp: string) {
-    this.wsUrl = `ws://${tvIp}:3000`;
+    this.wsUrl = `wss://${tvIp}:3001`;
     this.tv = getKnownTv(tvIp);
     this._wsp = new WebSocketAsPromised(this.wsUrl, {
-      createWebSocket: (url) => new websocket.w3cwebsocket(url),
-      packMessage: (data) => JSON.stringify(data),
-      unpackMessage: (message) => JSON.parse(message.toString()),
-      attachRequestId: (data, requestId) => Object.assign({ id: requestId }, data),
-      extractRequestId: (data) => data && data.id,
+      createWebSocket,
+      extractMessageData,
+      packMessage,
+      unpackMessage,
+      attachRequestId,
+      extractRequestId,
     });
     this._registerWsController = new PromiseController(registeringWsOptions);
   }
@@ -96,7 +104,8 @@ export default class WebosWsRemoteControl {
 
     if (!this._pointerWs) {
       this._pointerWs = new WebSocketAsPromised(this._pointerWsUrl, {
-        createWebSocket: (url) => new websocket.w3cwebsocket(url),
+        createWebSocket,
+        extractMessageData,
       });
       await this._pointerWs.open();
     }
