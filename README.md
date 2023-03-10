@@ -1,4 +1,4 @@
-# Remote TV control for developers
+# Remote TV control for developers (RTV)
 
 Tools for Smart TV developers.
 
