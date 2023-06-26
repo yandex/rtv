@@ -12,7 +12,7 @@
     "test": "lerna run build && lerna exec -- npm run test",
     "e2e": "lerna exec --scope rtv-server npm run test:api",
     "start": "lerna run start --scope=rtv-server --stream",
-    "release": "lerna version $VER --no-push --yes",
+    "release": "lerna version $VER --no-git-tag-version --yes",
     "release-patch": "VER=patch npm run release",
     "release-minor": "VER=minor npm run release",
     "release-next": "VER=prerelease npm run release",
