@@ -5,8 +5,6 @@ import semver from 'semver';
 import * as qs from 'query-string';
 import fetch from 'isomorphic-fetch';
 
-const clientVersion = process.env.npm_package_version as string;
-
 export interface RequestParams {
   config: {
     apiUrl?: string;
@@ -24,6 +22,7 @@ export interface RequestParams {
      * rtv-user name (shown in lastUsed field)
      */
     user?: string;
+    clientVersion?: string;
   };
 
   handlers: RequestHandlers;
@@ -34,7 +33,7 @@ export interface RequestParams {
 
 export interface RequestHandlers {
   onRequest?(info: string): unknown;
-  onNeedUpdate?(data: { serverVersion: string; clientVersion: string }): unknown;
+  onNeedUpdate?(data: { serverVersion: string }): unknown;
 }
 
 export interface RequestOptions {
@@ -56,7 +55,8 @@ class Request {
   private _rtvUser: string | undefined;
   private _response: Awaited<ReturnType<typeof fetch>> | undefined;
   private _url = '';
-  private _headers: Record<string, string> = {};
+  private _headers: Record<string, string>;
+  private _clientVersion;
   private _options: RequestOptions = {};
 
   constructor({ config, handlers, path, options, queryObj }: RequestParams) {
@@ -65,6 +65,10 @@ class Request {
     this._handlers = handlers;
     this._checkTvIsOccupied = config.checkTvIsOccupied;
     this._rtvUser = config.user;
+    this._clientVersion = config.clientVersion || '1.0.0';
+    this._headers = {
+      'x-rtv-client-version': this._clientVersion,
+    };
     this._setUrl(path, queryObj);
     this._setHeaders(options ? options.headers : undefined);
     this._setOptions(options);
@@ -84,9 +88,7 @@ class Request {
   }
 
   _setHeaders(headers: Record<string, string | undefined> | undefined) {
-    Object.assign(this._headers, headers, {
-      'x-rtv-client-version': clientVersion,
-    });
+    Object.assign(this._headers, headers);
     if (this._rtvUser) {
       this._headers['x-rtv-user'] = this._rtvUser;
     }
@@ -116,7 +118,7 @@ class Request {
     }
     const serverVersion = this._response.headers.get('x-rtv-server-version');
     if (serverVersion && this._handlers && this._handlers.onNeedUpdate) {
-      checkOutdated(serverVersion, this._handlers.onNeedUpdate);
+      checkOutdated(this._clientVersion, serverVersion, this._handlers.onNeedUpdate);
     }
   }
 
@@ -137,10 +139,11 @@ const stringifyValues = (obj: Record<string, unknown>) =>
   }, {} as Record<string, unknown>);
 
 const checkOutdated = (
+  clientVersion: string,
   serverVersion: string,
-  onNeedUpdate: (versions: { serverVersion: string; clientVersion: string }) => unknown
+  onNeedUpdate: (versions: { clientVersion: string; serverVersion: string }) => unknown
 ) => {
   if (semver.gt(clientVersion, serverVersion) || semver.lt(clientVersion, serverVersion)) {
-    onNeedUpdate({ serverVersion, clientVersion });
+    onNeedUpdate({ clientVersion, serverVersion });
   }
 };

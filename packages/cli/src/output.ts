@@ -4,8 +4,6 @@
  */
 
 /* eslint-disable no-console */
-
-import 'console.table';
 import chalk from 'chalk';
 
 export const log = (str: string) => console.log(str);

@@ -5,11 +5,13 @@ import fs from 'fs';
 import path from 'path';
 import os from 'os';
 
+import pkg from './pkg';
+
 const CONFIG_FILE = '.rtvrc';
 
 export const initConfig = () => {
   // config defaults are in rtv-client: /packages/client/src/config.js
-  return Object.assign({}, readFromDefaultFile(), readFromEnv());
+  return Object.assign({ clientVersion: pkg?.version }, readFromDefaultFile(), readFromEnv());
 };
 
 const readFromDefaultFile = () => {

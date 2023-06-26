@@ -22,7 +22,6 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "commander": "^2.18.0",
-    "console.table": "^0.10.0",
     "open": "^7.0.4",
     "read-pkg-up": "^6.0.0",
     "rtv-client": "^2.9.0"
