@@ -17,7 +17,7 @@ import WebOSAppDebugger from './app-debugger';
 import WebosWsRemoteControl from './ws-remote-control';
 import { packIpkApp } from './app-packager';
 import remoteKeys from './remote-keys';
-import { enableDevMode as runDevMode, extendDevMode } from './dev-mode';
+import { enableDevMode as runDevMode, extendDevMode, enableDevModeNewInterface as runDevModeNew } from './dev-mode';
 import { WebosDeviceInfoExtended } from './discovery';
 
 const logger = Loggee.create('webos');
@@ -254,9 +254,11 @@ export const enableDevMode = async function (tvIP: string) {
     return 'Dev Mode extended';
   }
 
+  const info = await getTVInfo(tvIP);
+  const version = info.osVersion ? parseFloat(info.osVersion) : 0;
   const remoteControl = new WebosWsRemoteControl(tvIP);
   await remoteControl.connect();
-  await runDevMode(remoteControl);
+  await (version > 6 ? runDevMode(remoteControl) : runDevModeNew(remoteControl));
 
   return 'Dev Mode enabled';
 };
