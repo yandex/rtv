@@ -1,4 +1,5 @@
 {
+  ".":"kinopoisk/frontend/smarttv/rtv",
   ".dockerignore":"kinopoisk/frontend/smarttv/rtv/.dockerignore",
   ".editorconfig":"kinopoisk/frontend/smarttv/rtv/.editorconfig",
   ".eslintignore":"kinopoisk/frontend/smarttv/rtv/.eslintignore",
